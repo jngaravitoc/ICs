@@ -1,2 +1,1 @@
 #define DOUBLEPRECISION 1
-#define HAVE_HDF5 

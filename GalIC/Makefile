@@ -96,21 +96,21 @@ MATHLIB  = -lm
 
 
 
-ifeq ($(SYSTYPE),"Darwin")
+ifeq ($(SYSTYPE),"Ubuntu")
 CC       =  mpicc   # sets the C-compiler
 OPTIMIZE =   -ggdb -O3 -Wall -Wno-format-security -Wno-unknown-pragmas
-ifeq (NUM_THREADS,$(findstring NUM_THREADS,$(CONFIGVARS)))
-OPTIMIZE +=  -fopenmp
-MPI_COMPILE_FLAGS = $(shell mpicc --showme:compile)
-CC       =  gcc  $(MPI_COMPILE_FLAGS)      # to replace clang with gcc (mpicc uses clang for some reason)
-endif
-GSL_INCL = -I/sw/include -I/opt/local/include 
-GSL_LIBS = -L/sw/lib     -L/opt/local/lib
-FFTW_INCL= -I/sw/include -I/opt/local/include
-FFTW_LIBS= -L/sw/lib     -L/opt/local/lib
+#ifeq (NUM_THREADS,$(findstring NUM_THREADS,$(CONFIGVARS)))
+#OPTIMIZE +=  -fopenmp
+#MPI_COMPILE_FLAGS = $(shell mpicc --showme:compile)
+#CC       =  gcc  $(MPI_COMPILE_FLAGS)      # to replace clang with gcc (mpicc uses clang for some reason)
+#endif
+GSL_INCL = -I/usr/local/include  
+GSL_LIBS = -L/usr/local/lib  
+#FFTW_INCL= -I/sw/include -I/opt/local/include
+#FFTW_LIBS= -L/sw/lib     -L/opt/local/lib
 MPICHLIB = -lmpi 
-HDF5INCL = -I/sw/lib     -I/opt/local/include -DH5_USE_16_API #-DUSE_SSE
-HDF5LIB  = -L/sw/lib -L/opt/local/lib  -lhdf5 -lz
+#HDF5INCL = -I/sw/lib     -I/opt/local/include -DH5_USE_16_API #-DUSE_SSE
+#HDF5LIB  = -L/sw/lib -L/opt/local/lib  -lhdf5 -lz
 endif
 
 ifeq ($(SYSTYPE),"Darwin-mpich")
@@ -131,30 +131,6 @@ CUDA_LIBS= -Xlinker -rpath /Developer/NVIDIA/CUDA-5.0/lib -L/Developer/NVIDIA/CU
 NVCC     = /Developer/NVIDIA/CUDA-5.0/bin/nvcc
 CUDA_OPTIMIZE = -g -G -O3 -m64 --ptxas-options=-v -Xptxas="-v" --maxrregcount=32 -arch=sm_30 $(filter -I%,$(shell mpicc -show))
 endif
-
-
-ifeq ($(SYSTYPE), "Elgato")
-CC       =   mpicc
-OPTIMIZE =   -O3 -xavx -ip -DNO_RESTART
-ifeq (NUM_THREADS,$(findstring NUM_THREADS,$(CONFIGVARS)))
-OPTIMIZE +=  -fopenmp
-else
-OPTIMIZE +=  -Wno-unknown-pragmas
-endif
-GSL_INCL =  -I/home/brant/code/gsl/intel/include
-GSL_LIBS =  -L/home/brant/code/gsl/intel/lib
-FFTW_INCL=  -I/home/brant/code/fftw/fftw2/intel/include
-FFTW_LIBS=  -L/home/brant/code/fftw/fftw2/intel/lib
-GMP_INCL =  #-I/hits/tap/sw/libs/gmp-5.0.5/include
-GMP_LIBS =  #-L/hits/tap/sw/libs/gmp-5.0.5/lib  -Xlinker -R -Xlinker /hits/tap/sw/libs/gmp-5.0.5/lib
-MPICHLIB =
-HDF5INCL =  #-I/hits/tap/sw/libs/hdf5-1.8.10/include -DH5_USE_16_API
-HDF5LIB  =  #-L/hits/tap/sw/libs/hdf5-1.8.10/lib -lhdf5 -Xlinker -R -Xlinker /hits/tap/sw/libs/hdf5-1.8.10/lib
-#OPT      +=  -DNOCALLSOFSYSTEM
-#OPT      +=  -DIMPOSE_PINNING
-#OPT      +=  -DUSE_SSE
-endif
-
 
 
 # modules for Magny

@@ -14,7 +14,7 @@ DOUBLEPRECISION=1
 
 
 #--------------------------------------- Output/Input options
-HAVE_HDF5                     # needed when HDF5 I/O support is desired
+#HAVE_HDF5                     # needed when HDF5 I/O support is desired
 
 
 #DEBUG_ENABLE_FPU_EXCEPTIONS   #enables floating point exceptions
