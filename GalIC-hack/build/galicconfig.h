@@ -1,0 +1,1 @@
+#define DOUBLEPRECISION 1
