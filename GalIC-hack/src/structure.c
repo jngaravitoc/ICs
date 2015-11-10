@@ -64,11 +64,14 @@ void structure_determination(void)
   double hnew, dh, f_c, mhmvir;
 
 
-  if(All.Halo_C == 0.0){
+  if(All.Halo_C == 0.0)
+          {
 	  /* total galaxy mass */
-	  All.Mvir = pow(All.Vvir, 3) / (10.0 * All.G * All.Hubble);
+	  All.Mvir = pow(All.Vvir, 3) / (6.9713700231733506 * All.G * All.Hubble);
 	  /* virial radius of galaxy */
-	  All.Rvir = All.Vvir / (10.0 * All.Hubble);}
+	  All.Rvir = All.Vvir / (6.9713700231733506 * All.Hubble);
+          All.Halo_A = All.Halo_A * 0.7;
+          }
   else{
 	  /* total galaxy mass */
 	  All.Mvir = pow(All.Vvir, 3) / (6.9713700231733506 * All.G * All.Hubble);
