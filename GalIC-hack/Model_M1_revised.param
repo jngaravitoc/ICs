@@ -1,17 +1,17 @@
 
 %------   File and path names, as well as output file format
 
-OutputDir       ./MW
+OutputDir       ./B
 
-OutputFile      hack-mw    % Base filename of generated sequence of files
+OutputFile      hack-B    % Base filename of generated sequence of files
 SnapFormat      1       % File format selection
 
 
 %------   Basic structural parameters of model
 
-CC             9.86   % halo concentration
-Ahalo          0.0        % Hernquist scale length
-Vvir          128.45       % circular velocity v_200 (in km/sec)
+CC             0.0   % halo concentration
+Ahalo          8.0        % Hernquist scale length
+Vvir          39.786       % circular velocity v_200 (in km/sec)
 LAMBDA         0.049      % spin parameter          
 MD             0.0        % disk mass fraction      
 MB             0.0       % bulge mass fraction     
