@@ -1,11 +1,12 @@
 OutputDir                                         ./MW
-OutputFile                                        chervin
+OutputFile                                        hack-mw
 SnapFormat                                        1
-CC                                                10
-V200                                              162.9
+CC                                                9.86
+Ahalo                                             0
+Vvir                                              128.45
 LAMBDA                                            0.049
-MD                                                0.065
-MB                                                0.01
+MD                                                0
+MB                                                0
 MBH                                               0
 JD                                                0.065
 DiskHeight                                        0.15
