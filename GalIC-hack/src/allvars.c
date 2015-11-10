@@ -460,9 +460,9 @@ struct ExtNgbNODE *ExtNgb_Nodes;
 
 
 #ifdef STATICNFW
-double Rs, R200;
+double Rs, Rvir;
 double Dc;
-double RhoCrit, V200;
+double RhoCrit, Vvir;
 double fac;
 #endif
 

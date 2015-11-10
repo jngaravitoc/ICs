@@ -61,36 +61,51 @@ static double gc_int(double x, void *param)
 void structure_determination(void)
 {
   double jhalo, jdisk, jd;
-  double hnew, dh;
+  double hnew, dh, f_c, mhmvir;
 
-  /* total galaxy mass */
-  All.M200 = pow(All.V200, 3) / (10 * All.G * All.Hubble);
 
-  /* virial radius of galaxy */
-  All.R200 = All.V200 / (10 * All.Hubble);
+  if(All.Halo_C == 0.0){
+	  /* total galaxy mass */
+	  All.Mvir = pow(All.Vvir, 3) / (10.0 * All.G * All.Hubble);
+	  /* virial radius of galaxy */
+	  All.Rvir = All.Vvir / (10.0 * All.Hubble);}
+  else{
+	  /* total galaxy mass */
+	  All.Mvir = pow(All.Vvir, 3) / (6.9713700231733506 * All.G * All.Hubble);
+	  /* virial radius of galaxy */
+	  All.Rvir = All.Vvir / (6.9713700231733506 * All.Hubble);
 
-  All.LowerDispLimit = pow(0.01 * All.V200, 2);
-
-  /* halo scale radius */
-  All.Halo_Rs = All.R200 / All.Halo_C;
+          fprintf(stdout, "Mvir I %f, Rvir I %f and the constants G %f and H %f\n", All.Mvir, All.Rvir, All.G, All.Hubble);
+	  /* halo scale radius */
+	  All.Halo_Rs = All.Rvir / All.Halo_C;
+	  
+	  /* set the scale factor of the hernquist halo */
+	  f_c = log( 1 + All.Halo_C) - All.Halo_C / (1.0 + All.Halo_C); 
+	  All.Halo_A = All.Halo_Rs * 1.0 / (1.0/sqrt(2 * f_c) -  1.0 / All.Halo_C);
+	  
+	  /* set the Hernquist equivalent mass */
+	  mhmvir = pow(All.Halo_A / All.Halo_Rs, 2) / (2 * f_c);
+	  All.Mvir = All.Mvir * mhmvir;}  
+	  
+  
+  All.LowerDispLimit = pow(0.01 * All.Vvir, 2);
+  
+  /* Halo mass */
+  All.Halo_Mass = All.Mvir - All.Disk_Mass - All.Bulge_Mass - All.BH_Mass;
+  fprintf(stdout, "Halo Mass %f and A parameter %f  \n", All.Halo_Mass, All.Halo_A);
 
   /* determine the masses of all components */
-  All.Disk_Mass = All.MD * All.M200;
-  All.Bulge_Mass = All.MB * All.M200;
+  All.Disk_Mass = All.MD;
+  All.Bulge_Mass = All.MB;
 
-  All.BH_Mass = All.MBH * All.M200;
+  All.BH_Mass = All.MBH;
   if(All.MBH > 0)
     All.BH_N = 1;
   else
     All.BH_N = 0;
-
-  All.Halo_Mass = All.M200 - All.Disk_Mass - All.Bulge_Mass - All.BH_Mass;
-
-  /* set the scale factor of the hernquist halo */
-  All.Halo_A = All.Halo_Rs * sqrt(2 * (log(1 + All.Halo_C) - All.Halo_C / (1 + All.Halo_C)));
-
-
-  jhalo = All.Lambda * sqrt(All.G) * pow(All.M200, 1.5) * sqrt(2 * All.R200 / fc(All.Halo_C));
+  
+  
+  jhalo = All.Lambda * sqrt(All.G) * pow(All.Mvir, 1.5) * sqrt(2 * All.Rvir / fc(All.Halo_C));
   jdisk = All.JD * jhalo;
 
   double halo_spinfactor =
@@ -99,16 +114,16 @@ void structure_determination(void)
 								   1.5) / structure_gc(All.Halo_C);
 
   mpi_printf("\nStructural parameters:\n");
-  mpi_printf("R200            = %g\n", All.R200);
-  mpi_printf("M200            = %g  (this is the total mass)\n", All.M200);
+  mpi_printf("Rvir            = %g\n", All.Rvir);
+  mpi_printf("Mvir            = %g  (this is the total mass of the equivalent Hernquist)\n", All.Mvir);
   mpi_printf("A (halo)        = %g\n", All.Halo_A);
   mpi_printf("halo_spinfactor = %g\n", halo_spinfactor);
 
   /* first guess for disk scale length */
-  All.Disk_H = sqrt(2.0) / 2.0 * All.Lambda / fc(All.Halo_C) * All.R200;
+  All.Disk_H = sqrt(2.0) / 2.0 * All.Lambda / fc(All.Halo_C) * All.Rvir;
   All.Disk_Z0 = All.DiskHeight * All.Disk_H;	/* sets disk thickness */
 
-  All.Bulge_A = All.BulgeSize * All.Halo_A;	/* this will be used if no disk is present */
+  All.Bulge_A = All.BulgeSize;	/* this will be used if no disk is present */
 
   MType[1] = All.Halo_Mass;
   MType[2] = All.Disk_Mass;
@@ -158,7 +173,7 @@ double structure_disk_angmomentum(void)
 
   double result, abserr;
 
-  gsl_integration_qag(&F, 0, dmin(30 * All.Disk_H, All.R200),
+  gsl_integration_qag(&F, 0, dmin(30 * All.Disk_H, All.Rvir),
 		      0, 1.0e-8, WORKSIZE, GSL_INTEG_GAUSS41, workspace, &result, &abserr);
 
   result *= All.Disk_Mass;

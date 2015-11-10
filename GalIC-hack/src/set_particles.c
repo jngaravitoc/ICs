@@ -404,7 +404,7 @@ void output_rotcurve(void)
       char buf[1000];
       int j, n = 5000;
 
-      double Rmax = All.R200;
+      double Rmax = All.Rvir;
 
       sprintf(buf, "%s/rotcurve.txt", All.OutputDir);
       FILE *fd = fopen(buf, "w");

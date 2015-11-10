@@ -606,10 +606,10 @@ extern struct global_data_all_processes
 {
   /* parameters describing the structure of the galaxy model */
 
-  double V200;
-  double M200;
-  double R200;
-  
+  double Vvir;
+  double Mvir;
+  double Rvir;
+
   double MD, MB, MBH, JD;
 
   double Halo_Mass;

@@ -3,17 +3,18 @@
 
 OutputDir       ./MW
 
-OutputFile      chervin    % Base filename of generated sequence of files
+OutputFile      hack-mw    % Base filename of generated sequence of files
 SnapFormat      1       % File format selection
 
 
 %------   Basic structural parameters of model
 
-CC             10.0       % halo concentration
-V200          162.9       % circular velocity v_200 (in km/sec)
+CC             9.86   % halo concentration
+Ahalo          0.0        % Hernquist scale length
+Vvir          128.45       % circular velocity v_200 (in km/sec)
 LAMBDA         0.049      % spin parameter          
-MD             0.065      % disk mass fraction      
-MB             0.01       % bulge mass fraction     
+MD             0.0        % disk mass fraction      
+MB             0.0       % bulge mass fraction     
 MBH            0.0        % black hole mass fraction. If zero, no black
                           % hole is generated, otherwise one at the centre
                           % is added.

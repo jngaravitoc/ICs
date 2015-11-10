@@ -92,7 +92,7 @@ double forcegrid_get_potential(double *pos)
         {
           /* we are off the grid. In this case, let's pretend the halo is spherical and adopt this as the force */
 
-          pot = All.M200 / All.Halo_Mass * halo_get_potential(pos);
+          pot = All.Mvir / All.Halo_Mass * halo_get_potential(pos);
         }
     }
   else
@@ -170,7 +170,7 @@ void forcegrid_get_acceleration(double *pos, double *acc)
           /* we are off the grid. In this case, let's pretend the halo is spherical and adopt this as the force */
 
           halo_get_acceleration(pos, acc);
-          double fac = All.M200 / All.Halo_Mass;
+          double fac = All.Mvir / All.Halo_Mass;
 
           int k;
           for(k=0; k<3; k++)
@@ -1114,7 +1114,7 @@ double calc_stack_difference(double *d1, double *d2, int l, int i, int j, int ma
       else
 	{
 #ifdef RADIAL_WEIGHTING_IN_DENSITY_RESPONSE
-          return fabs(d1[STACKOFFSET(l, i, j)] - d2[STACKOFFSET(l, i, j)]) / min(dist[STACKOFFSET(l, i, j)], All.R200 / 20.0);
+          return fabs(d1[STACKOFFSET(l, i, j)] - d2[STACKOFFSET(l, i, j)]) / min(dist[STACKOFFSET(l, i, j)], All.Rvir / 20.0);
 #else
 	  return fabs(d1[STACKOFFSET(l, i, j)] - d2[STACKOFFSET(l, i, j)]);
 #endif

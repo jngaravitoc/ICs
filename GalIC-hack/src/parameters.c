@@ -157,8 +157,12 @@ void read_parameter_file(char *fname)
       addr[nt] = &All.Halo_C;
       id[nt++] = REAL;
 
-      strcpy(tag[nt], "V200");
-      addr[nt] = &All.V200;
+      strcpy(tag[nt], "Ahalo");
+      addr[nt] = &All.Halo_A;
+      id[nt++] = REAL;
+
+      strcpy(tag[nt], "Vvir");
+      addr[nt] = &All.Vvir;
       id[nt++] = REAL;
 
       strcpy(tag[nt], "LAMBDA");
@@ -339,14 +343,13 @@ void read_parameter_file(char *fname)
 		    continue;
 
 		  for(i = 0, j = -1; i < nt; i++)
-		    if(strcmp(buf1, tag[i]) == 0)
-		      {
-			j = i;
+                    if(strcmp(buf1, tag[i]) == 0)
+		      { 
+                        j = i;
 			tag[i][0] = 0;
 			break;
 		      }
-
-		  if(j >= 0)
+                  if(j >= 0)
 		    {
 		      switch (id[j])
 			{

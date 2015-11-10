@@ -27,7 +27,7 @@ double get_timestep(double *pos, double *vel, double *acc, int icell)
   double v = sqrt(vel[0] * vel[0] + vel[1] * vel[1] + vel[2] * vel[2]);
   double aa = sqrt(acc[0] * acc[0] + acc[1] * acc[1] + acc[2] * acc[2]);
 
-  double torbit = All.V200 / aa;
+  double torbit = All.Vvir / aa;
   double tcross = DG_CellSize[icell] / v;
 
   return dmin(All.TimeStepFactorOrbit * torbit, All.TimeStepFactorCellCross * tcross);
