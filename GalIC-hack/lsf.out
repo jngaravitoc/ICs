@@ -1,0 +1,971 @@
+Sender: LSF System <phpcadmin@cpu12>
+Subject: Job 468066: <GalIC_test> in cluster <phpc_cluster> Done
+
+Job <GalIC_test> was submitted from host <elgato-login.hpc.arizona.edu> by user <jngaravitoc> in cluster <phpc_cluster>.
+Job was executed on host(s) <16*cpu12>, in queue <medium>, as user <jngaravitoc> in cluster <phpc_cluster>.
+                            <16*cpu46>
+</home/u9/jngaravitoc> was used as the home directory.
+</home/u9/jngaravitoc/ICs/GalIC> was used as the working directory.
+Started at Fri Oct 30 15:35:31 2015
+Results reported at Fri Oct 30 16:00:21 2015
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+###========================================
+#!/bin/bash
+#BSUB -n 32
+#BSUB -R "span[ptile=16]"
+#BSUB -o lsf.out
+#BSUB -e lsf.err
+#BSUB -q "medium"
+#BSUB -J GalIC_test
+#---------------------------------------------------------------------
+
+module load gsl
+#module load openmpi
+mpirun -np 32 ./GalIC  MWbesla07.param
+
+
+###end of script
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               47236.22 sec.
+    Max Memory :             57935 MB
+    Average Memory :         55866.97 MB
+    Total Requested Memory : -
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               84237 MB
+
+    Max Processes :          41
+    Max Threads :            106
+
+The output (if any) follows:
+
+
+This is GalIC, version 1.0.
+
+Running on 32 processors.
+
+Code was compiled with settings:
+
+        DOUBLEPRECISION=1
+
+Obtaining parameters from file 'MWbesla07.param':
+OutputDir                                         ./out2
+OutputFile                                        besla
+SnapFormat                                        1
+CC                                                11
+V200                                              200
+LAMBDA                                            0.035
+MD                                                0.035
+MB                                                0.05
+MBH                                               0
+JD                                                0.035
+DiskHeight                                        0.2
+BulgeSize                                         0.1
+HaloStretch                                       1
+BulgeStretch                                      1
+N_HALO                                            100000
+N_DISK                                            100000
+N_BULGE                                           100000
+TypeOfHaloVelocityStructure                       2
+TypeOfDiskVelocityStructure                       3
+TypeOfBulgeVelocityStructure                      2
+HaloBetaParameter                                 0
+BulgeBetaParameter                                0
+HaloDispersionRoverZratio                         4
+DiskDispersionRoverZratio                         2
+BulgeDispersionRoverZratio                        4
+HaloStreamingVelocityParameter                    0
+DiskStreamingVelocityParameter                    1
+BulgeStreamingVelocityParameter                   0
+TorbitFac                                         10
+TimeStepFactorOrbit                               0.01
+TimeStepFactorCellCross                           0.25
+FractionToOptimizeIndependendly                   0.001
+IndepenentOptimizationsPerStep                    100
+StepsBetweenDump                                  10
+MaximumNumberOfSteps                              100
+MinParticlesPerBinForDispersionMeasurement        100
+MinParticlesPerBinForDensityMeasurement           50
+DG_MaxLevel                                       7
+EG_MaxLevel                                       7
+FG_Nbin                                           256
+OutermostBinEnclosedMassFraction                  0.999
+InnermostBinEnclosedMassFraction                  1e-07
+MaxVelInUnitsVesc                                 0.9999
+SampleDensityFieldForTargetResponse               1
+SampleParticleCount                               100000000
+SampleForceNhalo                                  0
+SampleForceNdisk                                  100000000
+SampleForceNbulge                                 0
+Softening                                         0.05
+TypeOfOpeningCriterion                            1
+ErrTolTheta                                       0.4
+ErrTolForceAcc                                    0.0025
+MultipleDomains                                   4
+TopNodeFactor                                     4
+NumFilesPerSnapshot                               1
+NumFilesWrittenInParallel                         1
+MaxMemSize                                        2300
+BufferSize                                        100
+BufferSizeGravity                                 100
+UnitLength_in_cm                                  3.08568e+21
+UnitMass_in_g                                     1.989e+43
+UnitVelocity_in_cm_per_s                          100000
+GravityConstantInternal                           0
+
+
+Hubble (internal units)  = 0.1
+G (internal units)       = 43018.7
+UnitMass_in_g            = 1.989e+43
+UnitTime_in_s            = 3.08568e+16
+UnitVelocity_in_cm_per_s = 100000
+UnitDensity_in_cgs       = 6.76991e-22
+UnitEnergy_in_cgs        = 1.989e+53
+
+
+Structural parameters:
+R200            = 200
+M200            = 185.966  (this is the total mass)
+A (halo)        = 32.2002
+halo_spinfactor = 0.145738
+H  (disk)       = 2.91102
+Z0 (disk)       = 0.582204
+A (bulge)       = 3.22002
+
+Grid structure:
+Rmax = 64352.1  (outer edge of grid)
+Rin  = 0.0101858  (radius that encloses a fraction 1e-07 of the Hernquist halo)
+Extension of first cell of density grid:   Rmin =  0.0101858  (grid spacing factor=1.11088)
+Extension of first cell of force grid:     Rmin =  0.0101858  (grid spacing factor=1.05077)
+Extension of first cell of energy grid:     Rmin =  0.0101858  (grid spacing factor=1.11088)
+DOMAIN:
+DOMAIN: Begin domain decomposition (sync-point 0).
+DOMAIN: NTopleaves=2332
+DOMAIN: determination of top-level tree done
+DOMAIN: cost summation for top-level tree done
+DOMAIN: balance reached among multiple-domains=1.19196, average leave-nodes per domain=18.2188  (took 1.28746e-05 sec)
+DOMAIN: combining multiple-domains took 0.00348806 sec
+DOMAIN: task reshuffling took 0.838402 sec
+DOMAIN: exchange of 97328567 particles
+ALLOCATE: Changing to MaxPart = 5266000
+DOMAIN: particle exchange done. (took 3.19556 sec)
+
+DOMAIN: ---->    Final load balance = 1.0058    <------
+
+DOMAIN: domain decomposition done.
+begin Peano-Hilbert order...
+Peano-Hilbert done.
+FORCETREE: Tree construction.  (presently allocated=1319.34 MB)
+FORCETREE: Tree construction done. (imported/local ratio:  max=0  avg_global=0)  <numnodes>=1.50711e+06  NTopnodes=2665 NTopleaves=2332 tree-build-scalability=0.998287
+GRAVTREE: Begin tree force.  (presently allocated=1646.3 MB)
+GRAVTREE:  MaxNexport=569878  MaxNexportNodes=2279512  (per thread)
+GRAVTREE: tree-force is done.
+sampling density field
+...............................................................................................................................................................................................................................................................................................................done
+
+Mass assigned to density reposnse grid:
+Type=1:  raw mass on grid =    170.159   target=   170.159 (after recalibration)
+Type=2:  raw mass on grid =     6.5088   target=    6.5088 (after recalibration)
+Type=3:  raw mass on grid =    9.29828   target=   9.29828 (after recalibration)
+Extension of first cell of energy grid:     Rmin =  0.0101858  (grid spacing factor=1.11088)
+
+Calculating velocity dispersion fields...
+method of lines, row 255 out of 256 for type=2
+method of lines, row 254 out of 256 for type=2
+method of lines, row 253 out of 256 for type=2
+method of lines, row 252 out of 256 for type=2
+method of lines, row 251 out of 256 for type=2
+method of lines, row 250 out of 256 for type=2
+method of lines, row 249 out of 256 for type=2
+method of lines, row 248 out of 256 for type=2
+method of lines, row 247 out of 256 for type=2
+method of lines, row 246 out of 256 for type=2
+method of lines, row 245 out of 256 for type=2
+method of lines, row 244 out of 256 for type=2
+method of lines, row 243 out of 256 for type=2
+method of lines, row 242 out of 256 for type=2
+method of lines, row 241 out of 256 for type=2
+method of lines, row 240 out of 256 for type=2
+method of lines, row 239 out of 256 for type=2
+method of lines, row 238 out of 256 for type=2
+method of lines, row 237 out of 256 for type=2
+method of lines, row 236 out of 256 for type=2
+method of lines, row 235 out of 256 for type=2
+method of lines, row 234 out of 256 for type=2
+method of lines, row 233 out of 256 for type=2
+method of lines, row 232 out of 256 for type=2
+method of lines, row 231 out of 256 for type=2
+method of lines, row 230 out of 256 for type=2
+method of lines, row 229 out of 256 for type=2
+method of lines, row 228 out of 256 for type=2
+method of lines, row 227 out of 256 for type=2
+method of lines, row 226 out of 256 for type=2
+method of lines, row 225 out of 256 for type=2
+method of lines, row 224 out of 256 for type=2
+method of lines, row 223 out of 256 for type=2
+method of lines, row 222 out of 256 for type=2
+method of lines, row 221 out of 256 for type=2
+method of lines, row 220 out of 256 for type=2
+method of lines, row 219 out of 256 for type=2
+method of lines, row 218 out of 256 for type=2
+method of lines, row 217 out of 256 for type=2
+method of lines, row 216 out of 256 for type=2
+method of lines, row 215 out of 256 for type=2
+method of lines, row 214 out of 256 for type=2
+method of lines, row 213 out of 256 for type=2
+method of lines, row 212 out of 256 for type=2
+method of lines, row 211 out of 256 for type=2
+method of lines, row 210 out of 256 for type=2
+method of lines, row 209 out of 256 for type=2
+method of lines, row 208 out of 256 for type=2
+method of lines, row 207 out of 256 for type=2
+method of lines, row 206 out of 256 for type=2
+method of lines, row 205 out of 256 for type=2
+method of lines, row 204 out of 256 for type=2
+method of lines, row 203 out of 256 for type=2
+method of lines, row 202 out of 256 for type=2
+method of lines, row 201 out of 256 for type=2
+method of lines, row 200 out of 256 for type=2
+method of lines, row 199 out of 256 for type=2
+method of lines, row 198 out of 256 for type=2
+method of lines, row 197 out of 256 for type=2
+method of lines, row 196 out of 256 for type=2
+method of lines, row 195 out of 256 for type=2
+method of lines, row 194 out of 256 for type=2
+method of lines, row 193 out of 256 for type=2
+method of lines, row 192 out of 256 for type=2
+method of lines, row 191 out of 256 for type=2
+method of lines, row 190 out of 256 for type=2
+method of lines, row 189 out of 256 for type=2
+method of lines, row 188 out of 256 for type=2
+method of lines, row 187 out of 256 for type=2
+method of lines, row 186 out of 256 for type=2
+method of lines, row 185 out of 256 for type=2
+method of lines, row 184 out of 256 for type=2
+method of lines, row 183 out of 256 for type=2
+method of lines, row 182 out of 256 for type=2
+method of lines, row 181 out of 256 for type=2
+method of lines, row 180 out of 256 for type=2
+method of lines, row 179 out of 256 for type=2
+method of lines, row 178 out of 256 for type=2
+method of lines, row 177 out of 256 for type=2
+method of lines, row 176 out of 256 for type=2
+method of lines, row 175 out of 256 for type=2
+method of lines, row 174 out of 256 for type=2
+method of lines, row 173 out of 256 for type=2
+method of lines, row 172 out of 256 for type=2
+method of lines, row 171 out of 256 for type=2
+method of lines, row 170 out of 256 for type=2
+method of lines, row 169 out of 256 for type=2
+method of lines, row 168 out of 256 for type=2
+method of lines, row 167 out of 256 for type=2
+method of lines, row 166 out of 256 for type=2
+method of lines, row 165 out of 256 for type=2
+method of lines, row 164 out of 256 for type=2
+method of lines, row 163 out of 256 for type=2
+method of lines, row 162 out of 256 for type=2
+method of lines, row 161 out of 256 for type=2
+method of lines, row 160 out of 256 for type=2
+method of lines, row 159 out of 256 for type=2
+method of lines, row 158 out of 256 for type=2
+method of lines, row 157 out of 256 for type=2
+method of lines, row 156 out of 256 for type=2
+method of lines, row 155 out of 256 for type=2
+method of lines, row 154 out of 256 for type=2
+method of lines, row 153 out of 256 for type=2
+method of lines, row 152 out of 256 for type=2
+method of lines, row 151 out of 256 for type=2
+method of lines, row 150 out of 256 for type=2
+method of lines, row 149 out of 256 for type=2
+method of lines, row 148 out of 256 for type=2
+method of lines, row 147 out of 256 for type=2
+method of lines, row 146 out of 256 for type=2
+method of lines, row 145 out of 256 for type=2
+method of lines, row 144 out of 256 for type=2
+method of lines, row 143 out of 256 for type=2
+method of lines, row 142 out of 256 for type=2
+method of lines, row 141 out of 256 for type=2
+method of lines, row 140 out of 256 for type=2
+method of lines, row 139 out of 256 for type=2
+method of lines, row 138 out of 256 for type=2
+method of lines, row 137 out of 256 for type=2
+method of lines, row 136 out of 256 for type=2
+method of lines, row 135 out of 256 for type=2
+method of lines, row 134 out of 256 for type=2
+method of lines, row 133 out of 256 for type=2
+method of lines, row 132 out of 256 for type=2
+method of lines, row 131 out of 256 for type=2
+method of lines, row 130 out of 256 for type=2
+method of lines, row 129 out of 256 for type=2
+method of lines, row 128 out of 256 for type=2
+method of lines, row 127 out of 256 for type=2
+method of lines, row 126 out of 256 for type=2
+method of lines, row 125 out of 256 for type=2
+method of lines, row 124 out of 256 for type=2
+method of lines, row 123 out of 256 for type=2
+method of lines, row 122 out of 256 for type=2
+method of lines, row 121 out of 256 for type=2
+method of lines, row 120 out of 256 for type=2
+method of lines, row 119 out of 256 for type=2
+method of lines, row 118 out of 256 for type=2
+method of lines, row 117 out of 256 for type=2
+method of lines, row 116 out of 256 for type=2
+method of lines, row 115 out of 256 for type=2
+method of lines, row 114 out of 256 for type=2
+method of lines, row 113 out of 256 for type=2
+method of lines, row 112 out of 256 for type=2
+method of lines, row 111 out of 256 for type=2
+method of lines, row 110 out of 256 for type=2
+method of lines, row 109 out of 256 for type=2
+method of lines, row 108 out of 256 for type=2
+method of lines, row 107 out of 256 for type=2
+method of lines, row 106 out of 256 for type=2
+method of lines, row 105 out of 256 for type=2
+method of lines, row 104 out of 256 for type=2
+method of lines, row 103 out of 256 for type=2
+method of lines, row 102 out of 256 for type=2
+method of lines, row 101 out of 256 for type=2
+method of lines, row 100 out of 256 for type=2
+method of lines, row 99 out of 256 for type=2
+method of lines, row 98 out of 256 for type=2
+method of lines, row 97 out of 256 for type=2
+method of lines, row 96 out of 256 for type=2
+method of lines, row 95 out of 256 for type=2
+method of lines, row 94 out of 256 for type=2
+method of lines, row 93 out of 256 for type=2
+method of lines, row 92 out of 256 for type=2
+method of lines, row 91 out of 256 for type=2
+method of lines, row 90 out of 256 for type=2
+method of lines, row 89 out of 256 for type=2
+method of lines, row 88 out of 256 for type=2
+method of lines, row 87 out of 256 for type=2
+method of lines, row 86 out of 256 for type=2
+method of lines, row 85 out of 256 for type=2
+method of lines, row 84 out of 256 for type=2
+method of lines, row 83 out of 256 for type=2
+method of lines, row 82 out of 256 for type=2
+method of lines, row 81 out of 256 for type=2
+method of lines, row 80 out of 256 for type=2
+method of lines, row 79 out of 256 for type=2
+method of lines, row 78 out of 256 for type=2
+method of lines, row 77 out of 256 for type=2
+method of lines, row 76 out of 256 for type=2
+method of lines, row 75 out of 256 for type=2
+method of lines, row 74 out of 256 for type=2
+method of lines, row 73 out of 256 for type=2
+method of lines, row 72 out of 256 for type=2
+method of lines, row 71 out of 256 for type=2
+method of lines, row 70 out of 256 for type=2
+method of lines, row 69 out of 256 for type=2
+method of lines, row 68 out of 256 for type=2
+method of lines, row 67 out of 256 for type=2
+method of lines, row 66 out of 256 for type=2
+method of lines, row 65 out of 256 for type=2
+method of lines, row 64 out of 256 for type=2
+method of lines, row 63 out of 256 for type=2
+method of lines, row 62 out of 256 for type=2
+method of lines, row 61 out of 256 for type=2
+method of lines, row 60 out of 256 for type=2
+method of lines, row 59 out of 256 for type=2
+method of lines, row 58 out of 256 for type=2
+method of lines, row 57 out of 256 for type=2
+method of lines, row 56 out of 256 for type=2
+method of lines, row 55 out of 256 for type=2
+method of lines, row 54 out of 256 for type=2
+method of lines, row 53 out of 256 for type=2
+method of lines, row 52 out of 256 for type=2
+method of lines, row 51 out of 256 for type=2
+method of lines, row 50 out of 256 for type=2
+method of lines, row 49 out of 256 for type=2
+method of lines, row 48 out of 256 for type=2
+method of lines, row 47 out of 256 for type=2
+method of lines, row 46 out of 256 for type=2
+method of lines, row 45 out of 256 for type=2
+method of lines, row 44 out of 256 for type=2
+method of lines, row 43 out of 256 for type=2
+method of lines, row 42 out of 256 for type=2
+method of lines, row 41 out of 256 for type=2
+method of lines, row 40 out of 256 for type=2
+method of lines, row 39 out of 256 for type=2
+method of lines, row 38 out of 256 for type=2
+method of lines, row 37 out of 256 for type=2
+method of lines, row 36 out of 256 for type=2
+method of lines, row 35 out of 256 for type=2
+method of lines, row 34 out of 256 for type=2
+method of lines, row 33 out of 256 for type=2
+method of lines, row 32 out of 256 for type=2
+method of lines, row 31 out of 256 for type=2
+method of lines, row 30 out of 256 for type=2
+method of lines, row 29 out of 256 for type=2
+method of lines, row 28 out of 256 for type=2
+method of lines, row 27 out of 256 for type=2
+method of lines, row 26 out of 256 for type=2
+method of lines, row 25 out of 256 for type=2
+method of lines, row 24 out of 256 for type=2
+method of lines, row 23 out of 256 for type=2
+method of lines, row 22 out of 256 for type=2
+method of lines, row 21 out of 256 for type=2
+method of lines, row 20 out of 256 for type=2
+method of lines, row 19 out of 256 for type=2
+method of lines, row 18 out of 256 for type=2
+method of lines, row 17 out of 256 for type=2
+method of lines, row 16 out of 256 for type=2
+method of lines, row 15 out of 256 for type=2
+method of lines, row 14 out of 256 for type=2
+method of lines, row 13 out of 256 for type=2
+method of lines, row 12 out of 256 for type=2
+method of lines, row 11 out of 256 for type=2
+method of lines, row 10 out of 256 for type=2
+method of lines, row 9 out of 256 for type=2
+method of lines, row 8 out of 256 for type=2
+method of lines, row 7 out of 256 for type=2
+method of lines, row 6 out of 256 for type=2
+method of lines, row 5 out of 256 for type=2
+method of lines, row 4 out of 256 for type=2
+method of lines, row 3 out of 256 for type=2
+method of lines, row 2 out of 256 for type=2
+method of lines, row 1 out of 256 for type=2
+method of lines, row 0 out of 256 for type=2
+done.
+
+Type=1:  fractions of particles with problematic low velocity dispersion: (r/R|t/z|phi/tot_phi) = (0|0|0.00097|0.00097)
+Type=2:  fractions of particles with problematic low velocity dispersion: (r/R|t/z|phi/tot_phi) = (0|0|0|0)
+Type=3:  fractions of particles with problematic low velocity dispersion: (r/R|t/z|phi/tot_phi) = (0|0|8e-05|8e-05)
+calculate mass map for energy grid...
+sampling energy field
+...............................................................................................................................................................................................................................................................................................................done.
+relative energy error= 2.49996  orbits=4   steps=1576  pos(=9847.52|84.8331|21293.1) vel=(21.0043|-2.47601|11.9934)
+relative energy error= 10.7059  orbits=2   steps=587  pos(=13082.3|-5809.28|9.03723) vel=(-0.639879|26.1523|20.2409)
+relative energy error= 2.97345  orbits=1   steps=728  pos(=8705.48|86.6542|8747) vel=(18.8295|-4.97945|29.233)
+relative energy error= 1.2261  orbits=8   steps=4470  pos(=-23047.4|-4704.22|-15152.4) vel=(17.3716|3.73512|7.49455)
+relative energy error= 4.18391  orbits=16   steps=4844  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|-10.1885)
+relative energy error= 3.66058  orbits=13   steps=6113  pos(=-45191.1|594.576|22849) vel=(12.1546|-1.17966|-10.5417)
+iter=    0: opt-frac=         0   type=1  vavg=  222.7437   (average number of orbits    15.7)      S= 0.0378533    [Sdisp_r=0.03757767 | Sdisp_t=0.03884123 | Sdisp_p=0.03749715 | Sdisp_q=0.03749715]    Sall= 0.0757066  Chg-Frac=         0
+iter=    0: opt-frac=         0   type=2  vavg=  281.7275   (average number of orbits    15.3)      S=0.04341128    [Sdisp_r=0.04995916 | Sdisp_t=0.04895011 | Sdisp_p=0.04961606 | Sdisp_q=0.02511979]    Sall=0.08682256  Chg-Frac=         0
+iter=    0: opt-frac=         0   type=3  vavg=  265.1879   (average number of orbits    15.9)      S= 0.0339814    [Sdisp_r=0.03398129 | Sdisp_t=0.03441489 | Sdisp_p=0.03376471 | Sdisp_q=0.03376471]    Sall= 0.0679628  Chg-Frac=         0
+
+writing snapshot file #0... 
+writing snapshot file: './out2/besla_000' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+
+Particles treated independently per CPU: 10  (effective value of FractionToOptimizeIndependendly is 0.00106667)
+
+relative energy error= 10.7059  orbits=2   steps=587  pos(=13082.3|-5809.28|9.03723) vel=(-0.639879|26.1523|20.2409)
+relative energy error= 10.6993  orbits=2   steps=587  pos(=13082.3|-5809.28|9.03723) vel=(-0.639879|26.1523|-20.2409)
+iter=    1: opt-frac= 0.1066667   type=1  vavg=  224.1622   (average number of orbits    15.6)      S=0.02983151    [Sdisp_r=0.03569065 | Sdisp_t=0.03671565 | Sdisp_p=0.03488469 | Sdisp_q=0.03488469]    Sall=0.06537543  Chg-Frac=  0.496794
+iter=    1: opt-frac= 0.1066667   type=2  vavg=  281.7329   (average number of orbits    15.2)      S=0.03559074    [Sdisp_r= 0.0443344 | Sdisp_t=0.04473159 | Sdisp_p=0.04587926 | Sdisp_q= 0.0238387]    Sall=0.07528673  Chg-Frac= 0.4912264
+iter=    1: opt-frac= 0.1066667   type=3  vavg=  265.7273   (average number of orbits    15.9)      S= 0.0264728    [Sdisp_r=0.03196124 | Sdisp_t=0.03240295 | Sdisp_p=0.03088288 | Sdisp_q=0.03088288]    Sall=0.05800529  Chg-Frac= 0.5018553
+relative energy error= 1.2261  orbits=8   steps=4470  pos(=-23047.4|-4704.22|-15152.4) vel=(17.3716|3.73512|7.49455)
+iter=    2: opt-frac= 0.2133333   type=1  vavg=  225.6636   (average number of orbits    15.5)      S=0.02260994    [Sdisp_r=0.03383616 | Sdisp_t=0.03499464 | Sdisp_p=0.03242817 | Sdisp_q=0.03242817]    Sall=0.05603172  Chg-Frac= 0.4909191
+iter=    2: opt-frac= 0.2133333   type=2  vavg=  281.7826   (average number of orbits    15.2)      S=0.02933623    [Sdisp_r=0.03998573 | Sdisp_t=0.04074802 | Sdisp_p=0.04237735 | Sdisp_q=  0.023321]    Sall=0.06594426  Chg-Frac= 0.4802986
+iter=    2: opt-frac= 0.2133333   type=3  vavg=  266.2872   (average number of orbits    15.9)      S=0.02025635    [Sdisp_r=0.03001448 | Sdisp_t=0.03088018 | Sdisp_p=0.02815178 | Sdisp_q=0.02815178]    Sall= 0.0495559  Chg-Frac= 0.4767266
+relative energy error= 86.1272  orbits=1   steps=237  pos(=-3716.4|-7527.3|-5301.66) vel=(-27.904|-2.01399|28.664)
+relative energy error= 79.7897  orbits=0   steps=200  pos(=-3716.4|-7527.3|-5301.66) vel=(-27.904|-2.01399|-28.664)
+relative energy error= 2.97345  orbits=1   steps=728  pos(=8705.48|86.6542|8747) vel=(18.8295|-4.97945|29.233)
+relative energy error= 2.10461  orbits=1   steps=730  pos(=8705.48|86.6542|8747) vel=(18.7492|3.08694|29.233)
+relative energy error= 2.97345  orbits=1   steps=728  pos(=8705.48|86.6542|8747) vel=(18.7266|5.35328|29.233)
+relative energy error= 2.10461  orbits=1   steps=730  pos(=8705.48|86.6542|8747) vel=(18.8069|-2.7131|29.233)
+iter=    3: opt-frac=      0.32   type=1  vavg=  226.8551   (average number of orbits    15.5)      S=0.01730617    [Sdisp_r=0.03264096 | Sdisp_t=0.03352626 | Sdisp_p=0.02976331 | Sdisp_q=0.02976331]    Sall=0.04872964  Chg-Frac= 0.4784458
+iter=    3: opt-frac=      0.32   type=2  vavg=  281.8059   (average number of orbits    15.2)      S=0.02451848    [Sdisp_r=0.03547728 | Sdisp_t=0.03662763 | Sdisp_p=0.03904571 | Sdisp_q=0.02318411]    Sall=0.05810216  Chg-Frac= 0.4583333
+iter=    3: opt-frac=      0.32   type=3  vavg=    266.82   (average number of orbits    15.9)      S= 0.0150045    [Sdisp_r=0.02819325 | Sdisp_t=0.02968916 | Sdisp_p=0.02566561 | Sdisp_q=0.02566561]    Sall= 0.0423079  Chg-Frac= 0.4626506
+relative energy error= 4.18391  orbits=16   steps=4844  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|-10.1885)
+relative energy error= 1.67596  orbits=16   steps=4904  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|-10.018)
+relative energy error= 0.931503  orbits=15   steps=2928  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|10.1885)
+relative energy error= 2.49996  orbits=4   steps=1576  pos(=9847.52|84.8331|21293.1) vel=(21.0043|-2.47601|11.9934)
+relative energy error= 45.6136  orbits=2   steps=591  pos(=-17503.2|7385.62|-3234.66) vel=(-0.893644|0.630168|28.705)
+relative energy error= 48.6099  orbits=1   steps=563  pos(=-17503.2|7385.62|-3234.66) vel=(-0.893644|0.630168|-28.705)
+iter=    4: opt-frac= 0.4266667   type=1  vavg=   227.806   (average number of orbits    15.4)      S=0.01320551    [Sdisp_r=0.03151432 | Sdisp_t=0.03192471 | Sdisp_p=0.02742111 | Sdisp_q=0.02742111]    Sall=0.04277583  Chg-Frac=  0.473308
+iter=    4: opt-frac= 0.4266667   type=2  vavg=   281.713   (average number of orbits    15.2)      S=0.02083376    [Sdisp_r=0.03137628 | Sdisp_t=0.03352868 | Sdisp_p=0.03555627 | Sdisp_q=0.02313128]    Sall=0.05173189  Chg-Frac=  0.441271
+iter=    4: opt-frac= 0.4266667   type=3  vavg=  267.1139   (average number of orbits    15.9)      S=0.01083557    [Sdisp_r=0.02611689 | Sdisp_t=0.02805711 | Sdisp_p=0.02356611 | Sdisp_q=0.02356611]    Sall=0.03616213  Chg-Frac= 0.4461755
+iter=    5: opt-frac= 0.5333333   type=1  vavg=  228.4243   (average number of orbits    15.4)      S= 0.0104969    [Sdisp_r=0.03005031 | Sdisp_t=0.03035699 | Sdisp_p=0.02512314 | Sdisp_q=0.02512314]    Sall=0.03816029  Chg-Frac=  0.434807
+iter=    5: opt-frac= 0.5333333   type=2  vavg=  281.6452   (average number of orbits    15.2)      S=0.01773991    [Sdisp_r=0.02798769 | Sdisp_t=0.03048225 | Sdisp_p=0.03288307 | Sdisp_q=0.02321615]    Sall=0.04638219  Chg-Frac= 0.4169694
+iter=    5: opt-frac= 0.5333333   type=3  vavg=  267.4371   (average number of orbits    15.8)      S=0.008005588    [Sdisp_r=0.02471521 | Sdisp_t=0.02656097 | Sdisp_p=0.02147441 | Sdisp_q=0.02147441]    Sall=0.03156184  Chg-Frac= 0.4303391
+iter=    6: opt-frac=      0.64   type=1  vavg=  228.9476   (average number of orbits    15.3)      S=0.008478403    [Sdisp_r= 0.0286279 | Sdisp_t=0.02861448 | Sdisp_p=0.02293559 | Sdisp_q=0.02293559]    Sall=0.03425679  Chg-Frac=  0.427805
+iter=    6: opt-frac=      0.64   type=2  vavg=   281.587   (average number of orbits    15.3)      S=0.01526617    [Sdisp_r=0.02507817 | Sdisp_t=0.02739265 | Sdisp_p=0.02955738 | Sdisp_q=0.02302126]    Sall=0.04152853  Chg-Frac= 0.3798888
+iter=    6: opt-frac=      0.64   type=3  vavg=  267.6291   (average number of orbits    15.8)      S=0.006275295    [Sdisp_r=0.02300687 | Sdisp_t=0.02502045 | Sdisp_p=0.01945284 | Sdisp_q=0.01945284]    Sall=0.02800854  Chg-Frac=  0.398235
+relative energy error= 1.06693  orbits=2   steps=783  pos(=-7650.71|8587.04|-7520.59) vel=(-20.5887|-17.3428|-15.9743)
+iter=    7: opt-frac= 0.7466667   type=1  vavg=  229.3104   (average number of orbits    15.3)      S=0.007096063    [Sdisp_r=0.02691504 | Sdisp_t= 0.0269737 | Sdisp_p=0.02082646 | Sdisp_q=0.02082646]    Sall=0.03098148  Chg-Frac=  0.392837
+iter=    7: opt-frac= 0.7466667   type=2  vavg=  281.5044   (average number of orbits    15.3)      S=0.01309704    [Sdisp_r=0.02236819 | Sdisp_t=0.02521644 | Sdisp_p=0.02746873 | Sdisp_q=0.02280416]    Sall=0.03756141  Chg-Frac= 0.3576786
+iter=    7: opt-frac= 0.7466667   type=3  vavg=  267.5915   (average number of orbits    15.8)      S=0.005201943    [Sdisp_r=0.02147242 | Sdisp_t=0.02320796 | Sdisp_p=0.01765537 | Sdisp_q=0.01765537]    Sall=0.02519973  Chg-Frac= 0.3719147
+iter=    8: opt-frac= 0.8533333   type=1  vavg=   229.563   (average number of orbits    15.3)      S=0.006119946    [Sdisp_r=0.02539664 | Sdisp_t= 0.0252793 | Sdisp_p=0.01920115 | Sdisp_q=0.01920115]    Sall= 0.0283895  Chg-Frac= 0.3759018
+iter=    8: opt-frac= 0.8533333   type=2  vavg=  281.5012   (average number of orbits    15.3)      S=0.01114192    [Sdisp_r=0.02005782 | Sdisp_t=0.02315362 | Sdisp_p=0.02515038 | Sdisp_q=0.02297101]    Sall=0.03397512  Chg-Frac=  0.337863
+iter=    8: opt-frac= 0.8533333   type=3  vavg=  267.5735   (average number of orbits    15.8)      S=0.004520199    [Sdisp_r=0.01981742 | Sdisp_t= 0.0214785 | Sdisp_p=0.01601157 | Sdisp_q=0.01601157]    Sall=0.02284996  Chg-Frac= 0.3608618
+relative energy error= 3.66058  orbits=13   steps=6113  pos(=-45191.1|594.576|22849) vel=(12.1546|-1.17966|-10.5417)
+relative energy error= 3.66058  orbits=13   steps=6113  pos(=-45191.1|594.576|22849) vel=(12.1814|0.859471|-10.5417)
+iter=    9: opt-frac=      0.96   type=1  vavg=  229.7427   (average number of orbits    15.3)      S=0.005494407    [Sdisp_r=0.02390234 | Sdisp_t=0.02360196 | Sdisp_p=0.01733899 | Sdisp_q=0.01733899]    Sall=0.02603998  Chg-Frac= 0.3612565
+iter=    9: opt-frac=      0.96   type=2  vavg=  281.4437   (average number of orbits    15.3)      S=0.00982226    [Sdisp_r= 0.0175307 | Sdisp_t=0.02153175 | Sdisp_p=0.02288708 | Sdisp_q=0.02304106]    Sall=0.03106991  Chg-Frac= 0.3238494
+iter=    9: opt-frac=      0.96   type=3  vavg=  267.5041   (average number of orbits    15.8)      S=0.004118366    [Sdisp_r=0.01850933 | Sdisp_t= 0.0197546 | Sdisp_p=0.01429975 | Sdisp_q=0.01429975]    Sall=0.02083422  Chg-Frac= 0.3440137
+relative energy error= 3.75553  orbits=1   steps=494  pos(=13082.3|-5809.28|9.03723) vel=(23.9389|15.2379|-15.782)
+iter=   10: opt-frac=  1.066667   type=1  vavg=  229.8244   (average number of orbits    15.2)      S=0.005108235    [Sdisp_r=0.02269005 | Sdisp_t=0.02209174 | Sdisp_p= 0.0158893 | Sdisp_q= 0.0158893]    Sall=0.02424834  Chg-Frac= 0.3292752
+iter=   10: opt-frac=  1.066667   type=2  vavg=  281.4414   (average number of orbits    15.3)      S=0.008861564    [Sdisp_r=0.01518587 | Sdisp_t=0.01970187 | Sdisp_p=0.02090285 | Sdisp_q=0.02272796]    Sall= 0.0284912  Chg-Frac= 0.2953817
+iter=   10: opt-frac=  1.066667   type=3  vavg=  267.5136   (average number of orbits    15.8)      S=0.003790489    [Sdisp_r=0.01725304 | Sdisp_t=0.01848759 | Sdisp_p=0.01313967 | Sdisp_q=0.01313967]    Sall=0.01929548  Chg-Frac= 0.3052622
+
+writing snapshot file #1... 
+writing snapshot file: './out2/besla_001' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+relative energy error= 1.42458  orbits=7   steps=2322  pos(=-15397.7|33393.8|-10002.4) vel=(-10.8605|13.7884|8.49826)
+relative energy error= 1.01686  orbits=7   steps=3435  pos(=-15397.7|33393.8|-10002.4) vel=(3.43394|-17.2127|8.49826)
+iter=   11: opt-frac=  1.173333   type=1  vavg=  229.8898   (average number of orbits    15.2)      S=0.00480791    [Sdisp_r=0.02138833 | Sdisp_t=0.02092645 | Sdisp_p=0.01456642 | Sdisp_q=0.01456642]    Sall=0.02266981  Chg-Frac= 0.3233499
+iter=   11: opt-frac=  1.173333   type=2  vavg=  281.4613   (average number of orbits    15.3)      S=0.008039502    [Sdisp_r=0.01377533 | Sdisp_t=0.01798964 | Sdisp_p= 0.0192024 | Sdisp_q=0.02285247]    Sall=0.02649446  Chg-Frac= 0.2640261
+iter=   11: opt-frac=  1.173333   type=3  vavg=  267.5327   (average number of orbits    15.8)      S=0.003510402    [Sdisp_r=0.01645167 | Sdisp_t=0.01740296 | Sdisp_p=0.01216395 | Sdisp_q=0.01216395]    Sall=0.01805603  Chg-Frac= 0.2974856
+iter=   12: opt-frac=      1.28   type=1  vavg=  229.9219   (average number of orbits    15.2)      S=0.004508912    [Sdisp_r=  0.020217 | Sdisp_t=0.01985287 | Sdisp_p=0.01355683 | Sdisp_q=0.01355683]    Sall= 0.0213048  Chg-Frac= 0.3161875
+iter=   12: opt-frac=      1.28   type=2  vavg=  281.4122   (average number of orbits    15.3)      S=0.007441409    [Sdisp_r=0.01255892 | Sdisp_t= 0.0164755 | Sdisp_p=0.01763525 | Sdisp_q=0.02292223]    Sall=0.02483938  Chg-Frac= 0.2639232
+iter=   12: opt-frac=      1.28   type=3  vavg=   267.437   (average number of orbits    15.8)      S=0.003327447    [Sdisp_r=0.01544901 | Sdisp_t=0.01644722 | Sdisp_p=0.01131525 | Sdisp_q=0.01131525]    Sall=0.01695913  Chg-Frac= 0.2819989
+relative energy error= 2.97345  orbits=1   steps=728  pos(=8705.48|86.6542|8747) vel=(18.8295|-4.97945|29.233)
+relative energy error= 3.72754  orbits=2   steps=540  pos(=8705.48|86.6542|8747) vel=(18.8295|-4.97945|-29.233)
+relative energy error= 4.18391  orbits=16   steps=4844  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|-10.1885)
+relative energy error= 0.931503  orbits=15   steps=2928  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|10.1885)
+iter=   13: opt-frac=  1.386667   type=1  vavg=   229.907   (average number of orbits    15.2)      S=0.00432305    [Sdisp_r=0.01934243 | Sdisp_t=0.01894697 | Sdisp_p= 0.0125647 | Sdisp_q= 0.0125647]    Sall=0.02017775  Chg-Frac= 0.3021778
+iter=   13: opt-frac=  1.386667   type=2  vavg=  281.4265   (average number of orbits    15.3)      S=0.006764488    [Sdisp_r=0.01146333 | Sdisp_t=0.01556118 | Sdisp_p=0.01627753 | Sdisp_q=0.02301432]    Sall=0.02334358  Chg-Frac= 0.2380238
+iter=   13: opt-frac=  1.386667   type=3  vavg=  267.3993   (average number of orbits    15.8)      S=0.003138168    [Sdisp_r=0.01455558 | Sdisp_t=0.01534593 | Sdisp_p=0.01055171 | Sdisp_q=0.01055171]    Sall= 0.0158894  Chg-Frac= 0.2802332
+relative energy error= 2.49996  orbits=4   steps=1576  pos(=9847.52|84.8331|21293.1) vel=(21.0043|-2.47601|11.9934)
+iter=   14: opt-frac=  1.493333   type=1  vavg=  229.9104   (average number of orbits    15.2)      S=0.004135872    [Sdisp_r=0.01877054 | Sdisp_t=0.01818019 | Sdisp_p=0.01170694 | Sdisp_q=0.01170694]    Sall=0.01922703  Chg-Frac= 0.2939082
+iter=   14: opt-frac=  1.493333   type=2  vavg=  281.3977   (average number of orbits    15.3)      S=0.006256856    [Sdisp_r=0.01037739 | Sdisp_t=0.01475919 | Sdisp_p=0.01488402 | Sdisp_q=0.02294293]    Sall=0.02199774  Chg-Frac= 0.2354202
+iter=   14: opt-frac=  1.493333   type=3  vavg=   267.335   (average number of orbits    15.8)      S=0.002972143    [Sdisp_r=0.01370011 | Sdisp_t= 0.0144836 | Sdisp_p=0.009845594 | Sdisp_q=0.009845594]    Sall=0.01494087  Chg-Frac= 0.2800113
+iter=   15: opt-frac=       1.6   type=1  vavg=  229.9437   (average number of orbits    15.2)      S=0.004003168    [Sdisp_r=0.01811126 | Sdisp_t=0.01733513 | Sdisp_p=0.01102783 | Sdisp_q=0.01102783]    Sall=0.01837868  Chg-Frac= 0.2844892
+iter=   15: opt-frac=       1.6   type=2  vavg=  281.4067   (average number of orbits    15.3)      S=0.00577235    [Sdisp_r=0.009515158 | Sdisp_t= 0.0142611 | Sdisp_p=0.01347864 | Sdisp_q=0.02331286]    Sall=0.02091429  Chg-Frac= 0.2174856
+iter=   15: opt-frac=       1.6   type=3  vavg=  267.2763   (average number of orbits    15.8)      S=0.002835571    [Sdisp_r= 0.0130253 | Sdisp_t=0.01370272 | Sdisp_p=0.00913937 | Sdisp_q=0.00913937]    Sall=0.01408726  Chg-Frac= 0.2624426
+iter=   16: opt-frac=  1.706667   type=1  vavg=  229.9332   (average number of orbits    15.2)      S=0.003882262    [Sdisp_r=0.01746711 | Sdisp_t=0.01663142 | Sdisp_p=0.01027663 | Sdisp_q=0.01027663]    Sall=0.01754521  Chg-Frac= 0.2801542
+iter=   16: opt-frac=  1.706667   type=2  vavg=  281.4222   (average number of orbits    15.3)      S=0.005462897    [Sdisp_r=0.008743957 | Sdisp_t=0.01339077 | Sdisp_p=0.01240527 | Sdisp_q=0.02333187]    Sall=0.01993086  Chg-Frac= 0.2092979
+iter=   16: opt-frac=  1.706667   type=3  vavg=  267.2311   (average number of orbits    15.8)      S=0.00276711    [Sdisp_r=0.01234424 | Sdisp_t=0.01297056 | Sdisp_p=0.008493841 | Sdisp_q=0.008493841]    Sall=0.01334273  Chg-Frac= 0.2539889
+iter=   17: opt-frac=  1.813333   type=1  vavg=  229.9294   (average number of orbits    15.2)      S=0.003761676    [Sdisp_r=0.01676641 | Sdisp_t=0.01590703 | Sdisp_p=0.009632738 | Sdisp_q=0.009632738]    Sall= 0.0167464  Chg-Frac= 0.2800075
+iter=   17: opt-frac=  1.813333   type=2  vavg=  281.4191   (average number of orbits    15.3)      S=0.005101771    [Sdisp_r=0.007571607 | Sdisp_t=0.01285142 | Sdisp_p= 0.0115229 | Sdisp_q=0.02346849]    Sall=0.01895537  Chg-Frac= 0.2026034
+iter=   17: opt-frac=  1.813333   type=3  vavg=  267.2187   (average number of orbits    15.8)      S=0.002666163    [Sdisp_r=0.01183945 | Sdisp_t=0.01233415 | Sdisp_p=0.007935655 | Sdisp_q=0.007935655]    Sall=0.01267739  Chg-Frac= 0.2607015
+relative energy error= 3.66058  orbits=13   steps=6113  pos(=-45191.1|594.576|22849) vel=(12.1546|-1.17966|-10.5417)
+relative energy error= 2.17796  orbits=15   steps=10167  pos(=-45191.1|594.576|22849) vel=(12.1546|-1.17966|-6.89048)
+iter=   18: opt-frac=      1.92   type=1  vavg=  229.9123   (average number of orbits    15.2)      S=0.003647778    [Sdisp_r= 0.0162945 | Sdisp_t=0.01527209 | Sdisp_p=0.009101458 | Sdisp_q=0.009101458]    Sall=0.01609016  Chg-Frac= 0.2687706
+iter=   18: opt-frac=      1.92   type=2  vavg=   281.424   (average number of orbits    15.3)      S=0.004811582    [Sdisp_r=0.006948957 | Sdisp_t=0.01232288 | Sdisp_p=0.01062656 | Sdisp_q=0.02342633]    Sall=0.01814276  Chg-Frac= 0.1802595
+iter=   18: opt-frac=      1.92   type=3  vavg=  267.1965   (average number of orbits    15.8)      S=0.002574912    [Sdisp_r=0.01121854 | Sdisp_t=0.01168801 | Sdisp_p=0.007367238 | Sdisp_q=0.007367238]    Sall=0.01198517  Chg-Frac=  0.261916
+relative energy error= 5.33437  orbits=1   steps=502  pos(=7867.39|9325.58|-2187.35) vel=(11.1253|-5.20806|-33.197)
+relative energy error= 1.67644  orbits=2   steps=411  pos(=7867.39|9325.58|-2187.35) vel=(11.1253|-5.20806|33.197)
+iter=   19: opt-frac=  2.026667   type=1  vavg=  229.8892   (average number of orbits    15.2)      S=0.003510877    [Sdisp_r=   0.01581 | Sdisp_t=0.01481838 | Sdisp_p=0.008619353 | Sdisp_q=0.008619353]    Sall=0.01547765  Chg-Frac= 0.2565543
+iter=   19: opt-frac=  2.026667   type=2  vavg=  281.4395   (average number of orbits    15.2)      S=0.004589137    [Sdisp_r=0.006632128 | Sdisp_t=0.01167998 | Sdisp_p=0.009566274 | Sdisp_q=0.02329245]    Sall=0.01738185  Chg-Frac= 0.1747773
+iter=   19: opt-frac=  2.026667   type=3  vavg=  267.1829   (average number of orbits    15.8)      S=0.002530779    [Sdisp_r=0.01066065 | Sdisp_t= 0.0111884 | Sdisp_p=0.006765042 | Sdisp_q=0.006765042]    Sall=0.01137556  Chg-Frac=  0.251619
+iter=   20: opt-frac=  2.133333   type=1  vavg=  229.8624   (average number of orbits    15.2)      S=0.003373235    [Sdisp_r=0.01531081 | Sdisp_t=0.01435586 | Sdisp_p=0.008269743 | Sdisp_q=0.008269743]    Sall=0.01492477  Chg-Frac= 0.2427423
+iter=   20: opt-frac=  2.133333   type=2  vavg=  281.4458   (average number of orbits    15.2)      S=0.004423971    [Sdisp_r=0.006148113 | Sdisp_t= 0.0113029 | Sdisp_p=0.008994232 | Sdisp_q=0.02317087]    Sall=  0.016828  Chg-Frac= 0.1675084
+iter=   20: opt-frac=  2.133333   type=3  vavg=  267.1549   (average number of orbits    15.8)      S=0.002486372    [Sdisp_r= 0.0101138 | Sdisp_t= 0.0107598 | Sdisp_p=0.006365201 | Sdisp_q=0.006365201]    Sall=0.01088737  Chg-Frac= 0.2406596
+
+writing snapshot file #2... 
+writing snapshot file: './out2/besla_002' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+relative energy error= 38.4652  orbits=1   steps=602  pos(=-8891.61|17290.7|47.5744) vel=(-18.4954|12.9282|17.5096)
+relative energy error= 38.4652  orbits=1   steps=602  pos(=-8891.61|17290.7|47.5744) vel=(0.243526|22.5645|17.5096)
+iter=   21: opt-frac=      2.24   type=1  vavg=  229.8729   (average number of orbits    15.1)      S=0.003288202    [Sdisp_r=0.01484739 | Sdisp_t=0.01396891 | Sdisp_p=0.00780048 | Sdisp_q=0.00780048]    Sall=0.01439252  Chg-Frac= 0.2500462
+iter=   21: opt-frac=      2.24   type=2  vavg=   281.441   (average number of orbits    15.2)      S= 0.0041819    [Sdisp_r=0.005776059 | Sdisp_t=0.01094468 | Sdisp_p=0.008701464 | Sdisp_q=0.02319683]    Sall=0.01633666  Chg-Frac= 0.1775905
+iter=   21: opt-frac=      2.24   type=3  vavg=  267.1491   (average number of orbits    15.8)      S=0.002441396    [Sdisp_r=0.009567967 | Sdisp_t=0.01042954 | Sdisp_p=0.006075554 | Sdisp_q=0.006075554]    Sall=0.01047855  Chg-Frac= 0.2385122
+iter=   22: opt-frac=  2.346667   type=1  vavg=  229.8799   (average number of orbits    15.1)      S=0.00325374    [Sdisp_r=0.01442004 | Sdisp_t=0.01355546 | Sdisp_p=0.007441481 | Sdisp_q=0.007441481]    Sall=0.01396836  Chg-Frac= 0.2428073
+iter=   22: opt-frac=  2.346667   type=2  vavg=  281.4545   (average number of orbits    15.2)      S=0.004021283    [Sdisp_r=0.005583367 | Sdisp_t=0.01063018 | Sdisp_p=0.008269094 | Sdisp_q=0.02308416]    Sall=0.01591298  Chg-Frac= 0.1603332
+iter=   22: opt-frac=  2.346667   type=3  vavg=  267.1616   (average number of orbits    15.8)      S=0.002366166    [Sdisp_r=0.009359505 | Sdisp_t=0.01008063 | Sdisp_p=0.005808933 | Sdisp_q=0.005808933]    Sall=0.01013067  Chg-Frac= 0.2339711
+relative energy error= 4.18391  orbits=16   steps=4844  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|-10.1885)
+relative energy error= 12.6509  orbits=9   steps=3012  pos(=-12583|-4080.58|53478.4) vel=(12.1577|-4.54457|-10.1885)
+relative energy error= 4.18391  orbits=16   steps=4844  pos(=-12583|-4080.58|53478.4) vel=(11.1049|-1.29788|-10.1885)
+relative energy error= 12.6509  orbits=9   steps=3012  pos(=-12583|-4080.58|53478.4) vel=(7.17689|10.8146|-10.1885)
+iter=   23: opt-frac=  2.453333   type=1  vavg=  229.8852   (average number of orbits    15.1)      S=0.003196419    [Sdisp_r=0.01406101 | Sdisp_t=0.01317787 | Sdisp_p=0.00709361 | Sdisp_q=0.00709361]    Sall=0.01355294  Chg-Frac= 0.2398812
+iter=   23: opt-frac=  2.453333   type=2  vavg=  281.4515   (average number of orbits    15.2)      S=0.003902746    [Sdisp_r=0.005099592 | Sdisp_t=0.01032169 | Sdisp_p=0.007629754 | Sdisp_q=0.02312985]    Sall=0.01544797  Chg-Frac= 0.1558258
+iter=   23: opt-frac=  2.453333   type=3  vavg=  267.1413   (average number of orbits    15.8)      S=0.002328372    [Sdisp_r=0.009143189 | Sdisp_t=0.009621367 | Sdisp_p=0.005554927 | Sdisp_q=0.005554927]    Sall=0.009796974  Chg-Frac= 0.2222222
+iter=   24: opt-frac=      2.56   type=1  vavg=   229.851   (average number of orbits    15.1)      S=0.003109584    [Sdisp_r=0.01376357 | Sdisp_t=0.01273928 | Sdisp_p=0.006877332 | Sdisp_q=0.006877332]    Sall=0.01317396  Chg-Frac= 0.2407563
+iter=   24: opt-frac=      2.56   type=2  vavg=  281.4661   (average number of orbits    15.2)      S=0.003705796    [Sdisp_r=0.005016808 | Sdisp_t=0.01001247 | Sdisp_p=0.00724513 | Sdisp_q=0.02317619]    Sall=0.01506844  Chg-Frac= 0.1521169
+iter=   24: opt-frac=      2.56   type=3  vavg=  267.0955   (average number of orbits    15.8)      S=0.002258952    [Sdisp_r=0.008927583 | Sdisp_t=0.009298303 | Sdisp_p=0.005341085 | Sdisp_q=0.005341085]    Sall=0.009485966  Chg-Frac= 0.2223475
+iter=   25: opt-frac=  2.666667   type=1  vavg=  229.8272   (average number of orbits    15.1)      S=0.003045795    [Sdisp_r=0.01346739 | Sdisp_t=0.01235797 | Sdisp_p=0.006603243 | Sdisp_q=0.006603243]    Sall=0.01280376  Chg-Frac=   0.22644
+iter=   25: opt-frac=  2.666667   type=2  vavg=  281.4659   (average number of orbits    15.2)      S=0.003597447    [Sdisp_r=0.004583616 | Sdisp_t=0.009771728 | Sdisp_p=0.007047217 | Sdisp_q=0.02304576]    Sall=0.01470953  Chg-Frac= 0.1396601
+iter=   25: opt-frac=  2.666667   type=3  vavg=  267.0867   (average number of orbits    15.8)      S=0.002219884    [Sdisp_r=0.008683196 | Sdisp_t=0.009043489 | Sdisp_p=0.005127879 | Sdisp_q=0.005127879]    Sall=0.009215495  Chg-Frac= 0.2200555
+relative energy error= 1.9721  orbits=2   steps=590  pos(=-7650.71|8587.04|-7520.59) vel=(-20.5887|-17.3428|19.1224)
+relative energy error= 2.4559  orbits=1   steps=530  pos(=-7650.71|8587.04|-7520.59) vel=(-20.5887|-17.3428|-19.1224)
+iter=   26: opt-frac=  2.773333   type=1  vavg=  229.8303   (average number of orbits    15.1)      S=0.003022907    [Sdisp_r=0.01318989 | Sdisp_t=0.01206994 | Sdisp_p=0.006442701 | Sdisp_q=0.006442701]    Sall=0.01255921  Chg-Frac= 0.2319442
+iter=   26: opt-frac=  2.773333   type=2  vavg=  281.4835   (average number of orbits    15.2)      S=0.003428006    [Sdisp_r=0.004414891 | Sdisp_t=0.009653715 | Sdisp_p=0.006776876 | Sdisp_q=0.02305077]    Sall=0.01440207  Chg-Frac= 0.1415822
+iter=   26: opt-frac=  2.773333   type=3  vavg=  267.0824   (average number of orbits    15.8)      S=0.002171765    [Sdisp_r=0.008377628 | Sdisp_t=0.008685819 | Sdisp_p=0.004881803 | Sdisp_q=0.004881803]    Sall=0.008878528  Chg-Frac= 0.2148162
+iter=   27: opt-frac=      2.88   type=1  vavg=  229.8496   (average number of orbits    15.1)      S=0.002906087    [Sdisp_r=0.01299152 | Sdisp_t=0.01186872 | Sdisp_p=0.006193596 | Sdisp_q=0.006193596]    Sall=0.01221795  Chg-Frac= 0.2383042
+iter=   27: opt-frac=      2.88   type=2  vavg=   281.484   (average number of orbits    15.2)      S=0.003320585    [Sdisp_r=0.004253673 | Sdisp_t=0.009472775 | Sdisp_p=0.006461404 | Sdisp_q=0.02298268]    Sall=0.01411322  Chg-Frac= 0.1332649
+iter=   27: opt-frac=      2.88   type=3  vavg=  267.0677   (average number of orbits    15.8)      S=0.002155054    [Sdisp_r=0.008190463 | Sdisp_t=0.008504468 | Sdisp_p=0.004632814 | Sdisp_q=0.004632814]    Sall=0.008645194  Chg-Frac= 0.2116768
+iter=   28: opt-frac=  2.986667   type=1  vavg=  229.8199   (average number of orbits    15.1)      S=0.002860594    [Sdisp_r=0.01263317 | Sdisp_t=0.01145479 | Sdisp_p=0.005956955 | Sdisp_q=0.005956955]    Sall=0.01186106  Chg-Frac= 0.2246024
+iter=   28: opt-frac=  2.986667   type=2  vavg=  281.4738   (average number of orbits    15.2)      S=0.00322805    [Sdisp_r=0.004143134 | Sdisp_t=0.009211353 | Sdisp_p=0.006181749 | Sdisp_q=0.02284864]    Sall=0.01382427  Chg-Frac= 0.1293168
+iter=   28: opt-frac=  2.986667   type=3  vavg=  267.0648   (average number of orbits    15.8)      S=0.002113353    [Sdisp_r=0.007936883 | Sdisp_t= 0.0083116 | Sdisp_p=0.004411403 | Sdisp_q=0.004411403]    Sall=0.008381176  Chg-Frac= 0.2240473
+iter=   29: opt-frac=  3.093333   type=1  vavg=  229.8049   (average number of orbits    15.1)      S=0.002797755    [Sdisp_r=0.01252089 | Sdisp_t= 0.0111871 | Sdisp_p=0.005683789 | Sdisp_q=0.005683789]    Sall=0.01156665  Chg-Frac= 0.2179634
+iter=   29: opt-frac=  3.093333   type=2  vavg=  281.4775   (average number of orbits    15.2)      S=0.003163953    [Sdisp_r=0.003917545 | Sdisp_t=0.009027991 | Sdisp_p=0.005891321 | Sdisp_q=0.02268651]    Sall=0.01354479  Chg-Frac= 0.1263598
+iter=   29: opt-frac=  3.093333   type=3  vavg=  267.0129   (average number of orbits    15.8)      S=0.002079635    [Sdisp_r=0.007699971 | Sdisp_t=0.008161126 | Sdisp_p=0.004238023 | Sdisp_q=0.004238023]    Sall=0.00816392  Chg-Frac= 0.2113043
+iter=   30: opt-frac=       3.2   type=1  vavg=  229.8105   (average number of orbits    15.1)      S=0.002776914    [Sdisp_r=0.01232834 | Sdisp_t=0.01098347 | Sdisp_p=0.005473818 | Sdisp_q=0.005473818]    Sall=0.01134178  Chg-Frac=  0.219519
+iter=   30: opt-frac=       3.2   type=2  vavg=  281.4652   (average number of orbits    15.2)      S=0.003085519    [Sdisp_r=0.003825454 | Sdisp_t=0.00882325 | Sdisp_p=0.005615781 | Sdisp_q=0.02257503]    Sall= 0.0132954  Chg-Frac= 0.1274833
+iter=   30: opt-frac=       3.2   type=3  vavg=  266.9924   (average number of orbits    15.8)      S=0.002032316    [Sdisp_r=0.007556841 | Sdisp_t=0.007872843 | Sdisp_p=0.004020087 | Sdisp_q=0.004020087]    Sall=0.00789978  Chg-Frac= 0.2133598
+
+writing snapshot file #3... 
+writing snapshot file: './out2/besla_003' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+iter=   31: opt-frac=  3.306667   type=1  vavg=  229.7758   (average number of orbits    15.1)      S=0.002735487    [Sdisp_r=0.01209289 | Sdisp_t=0.01068979 | Sdisp_p=0.00531662 | Sdisp_q=0.00531662]    Sall=0.01108947  Chg-Frac= 0.2155464
+iter=   31: opt-frac=  3.306667   type=2  vavg=   281.467   (average number of orbits    15.2)      S=0.002992526    [Sdisp_r=0.003788765 | Sdisp_t=0.008673523 | Sdisp_p=0.005423001 | Sdisp_q=0.02248821]    Sall= 0.0130859  Chg-Frac= 0.1239474
+iter=   31: opt-frac=  3.306667   type=3  vavg=  266.9667   (average number of orbits    15.8)      S=0.002054346    [Sdisp_r=0.007340762 | Sdisp_t=0.007573483 | Sdisp_p=0.003836806 | Sdisp_q=0.003836806]    Sall=0.00770131  Chg-Frac= 0.2010391
+relative energy error= 4.18391  orbits=16   steps=4844  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|-10.1885)
+relative energy error= 0.931503  orbits=15   steps=2928  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|10.1885)
+iter=   32: opt-frac=  3.413333   type=1  vavg=  229.7835   (average number of orbits    15.1)      S=0.00266715    [Sdisp_r=0.01181495 | Sdisp_t=0.01054988 | Sdisp_p=0.005228306 | Sdisp_q=0.005228306]    Sall=0.01087251  Chg-Frac= 0.2200877
+iter=   32: opt-frac=  3.413333   type=2  vavg=  281.4675   (average number of orbits    15.2)      S=0.002936767    [Sdisp_r=0.003643297 | Sdisp_t=0.008529512 | Sdisp_p=0.005101604 | Sdisp_q=0.02241784]    Sall=0.01285983  Chg-Frac= 0.1300706
+iter=   32: opt-frac=  3.413333   type=3  vavg=   266.965   (average number of orbits    15.8)      S=0.002028123    [Sdisp_r=0.007238153 | Sdisp_t=0.007279834 | Sdisp_p=0.003586498 | Sdisp_q=0.003586498]    Sall=0.007450869  Chg-Frac= 0.2177056
+iter=   33: opt-frac=      3.52   type=1  vavg=  229.7849   (average number of orbits    15.1)      S=0.002614728    [Sdisp_r=0.01159482 | Sdisp_t=0.01043412 | Sdisp_p=0.005120124 | Sdisp_q=0.005120124]    Sall=0.01068202  Chg-Frac= 0.2041451
+iter=   33: opt-frac=      3.52   type=2  vavg=  281.4614   (average number of orbits    15.2)      S=0.002863653    [Sdisp_r=0.003497929 | Sdisp_t=0.008255981 | Sdisp_p=0.005001613 | Sdisp_q= 0.0223108]    Sall=0.01263023  Chg-Frac= 0.1251625
+iter=   33: opt-frac=      3.52   type=3  vavg=  266.9737   (average number of orbits    15.8)      S=0.001985281    [Sdisp_r=0.007128926 | Sdisp_t= 0.0070612 | Sdisp_p=0.00350487 | Sdisp_q=0.00350487]    Sall=0.007285248  Chg-Frac= 0.2057466
+relative energy error= 4.83641  orbits=1   steps=459  pos(=3049.37|10590.5|2281.88) vel=(-34.3223|13.0533|4.13252)
+relative energy error= 4.83641  orbits=1   steps=459  pos(=3049.37|10590.5|2281.88) vel=(36.0084|-7.19742|4.13252)
+relative energy error= 3.29941  orbits=1   steps=273  pos(=2208.95|-7324.02|-3794.93) vel=(14.5266|35.1967|-18.9944)
+relative energy error= 4.1222  orbits=0   steps=164  pos(=2208.95|-7324.02|-3794.93) vel=(31.5648|-21.2953|-18.9944)
+iter=   34: opt-frac=  3.626667   type=1  vavg=  229.7837   (average number of orbits    15.1)      S=0.002545903    [Sdisp_r=0.01144166 | Sdisp_t=0.01024537 | Sdisp_p=0.005033158 | Sdisp_q=0.005033158]    Sall=0.01048424  Chg-Frac=  0.213026
+iter=   34: opt-frac=  3.626667   type=2  vavg=  281.4688   (average number of orbits    15.2)      S=0.00278633    [Sdisp_r=0.003395237 | Sdisp_t=0.008164543 | Sdisp_p=0.004868332 | Sdisp_q=0.02233146]    Sall=0.01247622  Chg-Frac= 0.1161645
+iter=   34: opt-frac=  3.626667   type=3  vavg=  266.9536   (average number of orbits    15.8)      S=0.001956201    [Sdisp_r=0.006950454 | Sdisp_t=0.006920397 | Sdisp_p=0.003384627 | Sdisp_q=0.003384627]    Sall=0.007116227  Chg-Frac= 0.2052381
+iter=   35: opt-frac=  3.733333   type=1  vavg=  229.7883   (average number of orbits    15.1)      S=0.002504943    [Sdisp_r=0.01129597 | Sdisp_t= 0.0101738 | Sdisp_p=0.004914962 | Sdisp_q=0.004914962]    Sall=0.01032987  Chg-Frac= 0.1962959
+iter=   35: opt-frac=  3.733333   type=2  vavg=  281.4655   (average number of orbits    15.2)      S=0.002760652    [Sdisp_r=0.003261172 | Sdisp_t=0.008051528 | Sdisp_p=0.004693354 | Sdisp_q=0.02230523]    Sall=0.01233847  Chg-Frac= 0.1078772
+iter=   35: opt-frac=  3.733333   type=3  vavg=  266.9196   (average number of orbits    15.8)      S=0.001910369    [Sdisp_r=0.006795112 | Sdisp_t=0.006687746 | Sdisp_p=0.00328628 | Sdisp_q=0.00328628]    Sall=0.006924224  Chg-Frac= 0.2084578
+iter=   36: opt-frac=      3.84   type=1  vavg=  229.7694   (average number of orbits    15.1)      S=0.002488378    [Sdisp_r=0.01112732 | Sdisp_t=0.01004499 | Sdisp_p=0.004853541 | Sdisp_q=0.004853541]    Sall=0.01020822  Chg-Frac= 0.1942203
+iter=   36: opt-frac=      3.84   type=2  vavg=  281.4743   (average number of orbits    15.2)      S=0.002682585    [Sdisp_r=0.003137196 | Sdisp_t=0.007970816 | Sdisp_p=0.004534065 | Sdisp_q=0.02241128]    Sall=0.01219592  Chg-Frac= 0.1121703
+iter=   36: opt-frac=      3.84   type=3  vavg=  266.9564   (average number of orbits    15.8)      S=0.001904365    [Sdisp_r=0.006732013 | Sdisp_t=0.006497344 | Sdisp_p=0.003121903 | Sdisp_q=0.003121903]    Sall=0.006772656  Chg-Frac= 0.2042327
+iter=   37: opt-frac=  3.946667   type=1  vavg=  229.7511   (average number of orbits    15.1)      S=0.002438119    [Sdisp_r=0.01098253 | Sdisp_t=0.009929102 | Sdisp_p=0.00477101 | Sdisp_q=0.00477101]    Sall=0.01005153  Chg-Frac= 0.2089105
+iter=   37: opt-frac=  3.946667   type=2  vavg=  281.4693   (average number of orbits    15.2)      S=0.002652213    [Sdisp_r=0.003121173 | Sdisp_t=0.007878684 | Sdisp_p=0.004316077 | Sdisp_q= 0.0223188]    Sall= 0.0120609  Chg-Frac= 0.1132996
+iter=   37: opt-frac=  3.946667   type=3  vavg=  266.9466   (average number of orbits    15.8)      S=0.00189375    [Sdisp_r=0.006467384 | Sdisp_t=0.006427476 | Sdisp_p=0.003033812 | Sdisp_q=0.003033812]    Sall=0.006634372  Chg-Frac= 0.1959827
+relative energy error= 0.75083  orbits=0   steps=266  pos(=7867.39|9325.58|-2187.35) vel=(24.8924|11.1108|-22.5699)
+relative energy error= 1.29256  orbits=1   steps=363  pos(=7867.39|9325.58|-2187.35) vel=(-6.75983|-26.4081|-22.5699)
+relative energy error= 27.1908  orbits=2   steps=596  pos(=13082.3|-5809.28|9.03723) vel=(-0.639879|26.1523|-20.5632)
+relative energy error= 27.5144  orbits=2   steps=594  pos(=13082.3|-5809.28|9.03723) vel=(-0.639879|26.1523|20.5632)
+iter=   38: opt-frac=  4.053333   type=1  vavg=  229.7297   (average number of orbits    15.1)      S=0.002416807    [Sdisp_r=0.01078014 | Sdisp_t=0.009771514 | Sdisp_p=0.004670114 | Sdisp_q=0.004670114]    Sall=0.009889777  Chg-Frac= 0.2055079
+iter=   38: opt-frac=  4.053333   type=2  vavg=  281.4703   (average number of orbits    15.2)      S=0.002627092    [Sdisp_r=0.003051609 | Sdisp_t=0.007713555 | Sdisp_p=0.00415876 | Sdisp_q=0.02227368]    Sall=0.01192649  Chg-Frac= 0.1139716
+iter=   38: opt-frac=  4.053333   type=3  vavg=  266.9361   (average number of orbits    15.8)      S=0.001854458    [Sdisp_r=0.006273845 | Sdisp_t=0.006279633 | Sdisp_p=0.002969699 | Sdisp_q=0.002969699]    Sall=0.006477677  Chg-Frac= 0.2039241
+iter=   39: opt-frac=      4.16   type=1  vavg=  229.7466   (average number of orbits    15.1)      S=0.002372789    [Sdisp_r=0.01051733 | Sdisp_t=0.00965508 | Sdisp_p=0.004609968 | Sdisp_q=0.004609968]    Sall=0.009720876  Chg-Frac= 0.2024471
+iter=   39: opt-frac=      4.16   type=2  vavg=  281.4761   (average number of orbits    15.2)      S=0.002570706    [Sdisp_r=0.002996927 | Sdisp_t=0.00759945 | Sdisp_p=0.003868726 | Sdisp_q=0.02224888]    Sall= 0.0117492  Chg-Frac= 0.1163288
+iter=   39: opt-frac=      4.16   type=3  vavg=  266.9487   (average number of orbits    15.8)      S=0.001848204    [Sdisp_r=0.006027524 | Sdisp_t=0.006141895 | Sdisp_p=0.002915434 | Sdisp_q=0.002915434]    Sall=0.006348276  Chg-Frac= 0.2010169
+iter=   40: opt-frac=  4.266667   type=1  vavg=  229.7296   (average number of orbits    15.1)      S=0.002343009    [Sdisp_r=0.01041086 | Sdisp_t=0.009529964 | Sdisp_p=0.004544916 | Sdisp_q=0.004544916]    Sall=0.009600674  Chg-Frac= 0.1937884
+iter=   40: opt-frac=  4.266667   type=2  vavg=  281.4723   (average number of orbits    15.2)      S=0.002547417    [Sdisp_r=0.002876367 | Sdisp_t=0.00751397 | Sdisp_p=0.003745608 | Sdisp_q=0.02220016]    Sall=0.01163144  Chg-Frac= 0.1068449
+iter=   40: opt-frac=  4.266667   type=3  vavg=  266.9196   (average number of orbits    15.8)      S=0.001813896    [Sdisp_r=0.005941284 | Sdisp_t=0.006055897 | Sdisp_p=0.002873144 | Sdisp_q=0.002873144]    Sall=0.006249763  Chg-Frac= 0.1933072
+
+writing snapshot file #4... 
+writing snapshot file: './out2/besla_004' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+relative energy error= 4.18391  orbits=16   steps=4844  pos(=-12583|-4080.58|53478.4) vel=(8.22976|7.56795|-10.1885)
+relative energy error= 6.62066  orbits=10   steps=3257  pos(=-12583|-4080.58|53478.4) vel=(12.0213|-4.12392|-10.1885)
+relative energy error= 4.18391  orbits=16   steps=4844  pos(=-12583|-4080.58|53478.4) vel=(11.1049|-1.29788|-10.1885)
+relative energy error= 6.62067  orbits=10   steps=3257  pos(=-12583|-4080.58|53478.4) vel=(7.3133|10.394|-10.1885)
+iter=   41: opt-frac=  4.373333   type=1  vavg=  229.7222   (average number of orbits    15.1)      S=0.002320238    [Sdisp_r=0.01030064 | Sdisp_t=0.009418542 | Sdisp_p=0.004510803 | Sdisp_q=0.004510803]    Sall=0.009505435  Chg-Frac=  0.204454
+iter=   41: opt-frac=  4.373333   type=2  vavg=  281.4766   (average number of orbits    15.2)      S=0.002500361    [Sdisp_r=0.002850927 | Sdisp_t=0.007420151 | Sdisp_p=0.003712517 | Sdisp_q=0.02211224]    Sall=0.01152432  Chg-Frac=  0.109954
+iter=   41: opt-frac=  4.373333   type=3  vavg=  266.9306   (average number of orbits    15.8)      S=0.001801439    [Sdisp_r=0.005826739 | Sdisp_t=0.005932838 | Sdisp_p=0.002764913 | Sdisp_q=0.002764913]    Sall=0.006123789  Chg-Frac= 0.1957011
+relative energy error= 0.677789  orbits=4   steps=1029  pos(=-17503.2|7385.62|-3234.66) vel=(3.0707|-1.04262|27.0047)
+relative energy error= 2.40596  orbits=2   steps=797  pos(=-17503.2|7385.62|-3234.66) vel=(3.0707|-1.04262|-27.0047)
+iter=   42: opt-frac=      4.48   type=1  vavg=  229.7116   (average number of orbits    15.1)      S=0.002281021    [Sdisp_r=0.01031133 | Sdisp_t=0.009367175 | Sdisp_p=0.004453412 | Sdisp_q=0.004453412]    Sall=0.009427352  Chg-Frac= 0.1951403
+iter=   42: opt-frac=      4.48   type=2  vavg=  281.4804   (average number of orbits    15.2)      S=0.002458688    [Sdisp_r=0.002789653 | Sdisp_t=0.007357699 | Sdisp_p=0.003548933 | Sdisp_q=0.02214979]    Sall=0.01142021  Chg-Frac= 0.1004024
+iter=   42: opt-frac=      4.48   type=3  vavg=  266.9256   (average number of orbits    15.8)      S=0.001815151    [Sdisp_r=0.005650047 | Sdisp_t=0.005757822 | Sdisp_p=0.002709436 | Sdisp_q=0.002709436]    Sall=0.006021836  Chg-Frac= 0.2001126
+iter=   43: opt-frac=  4.586667   type=1  vavg=  229.6925   (average number of orbits    15.1)      S=0.002259884    [Sdisp_r= 0.0101986 | Sdisp_t=0.009301146 | Sdisp_p=0.004396147 | Sdisp_q=0.004396147]    Sall=0.009332895  Chg-Frac= 0.1929185
+iter=   43: opt-frac=  4.586667   type=2  vavg=  281.4722   (average number of orbits    15.2)      S=0.002412406    [Sdisp_r=0.002684601 | Sdisp_t=0.007299296 | Sdisp_p=0.003511728 | Sdisp_q=0.02209655]    Sall=0.01131045  Chg-Frac=0.09811108
+iter=   43: opt-frac=  4.586667   type=3  vavg=  266.9201   (average number of orbits    15.8)      S=0.001737857    [Sdisp_r=0.005578996 | Sdisp_t=0.005700621 | Sdisp_p=0.002697362 | Sdisp_q=0.002697362]    Sall=0.005906443  Chg-Frac= 0.1946504
+iter=   44: opt-frac=  4.693333   type=1  vavg=   229.702   (average number of orbits    15.1)      S=0.002243803    [Sdisp_r=0.01017044 | Sdisp_t=0.009231645 | Sdisp_p=0.004366041 | Sdisp_q=0.004366041]    Sall=0.009277345  Chg-Frac= 0.1919902
+iter=   44: opt-frac=  4.693333   type=2  vavg=  281.4778   (average number of orbits    15.2)      S=0.002406451    [Sdisp_r=0.002645054 | Sdisp_t=0.007222513 | Sdisp_p=0.003407061 | Sdisp_q=0.02205236]    Sall= 0.0112382  Chg-Frac= 0.1001797
+iter=   44: opt-frac=  4.693333   type=3  vavg=  266.8978   (average number of orbits    15.8)      S=0.00177282    [Sdisp_r=0.005435324 | Sdisp_t=0.005657693 | Sdisp_p=0.002631943 | Sdisp_q=0.002631943]    Sall=0.005862046  Chg-Frac= 0.1898393
+iter=   45: opt-frac=       4.8   type=1  vavg=  229.7005   (average number of orbits    15.1)      S=0.002172541    [Sdisp_r=0.01011206 | Sdisp_t=0.00917758 | Sdisp_p=0.004276698 | Sdisp_q=0.004276698]    Sall=0.009133301  Chg-Frac= 0.1919685
+iter=   45: opt-frac=       4.8   type=2  vavg=  281.4834   (average number of orbits    15.2)      S=0.002356275    [Sdisp_r=0.00261666 | Sdisp_t=0.007177906 | Sdisp_p=0.003307484 | Sdisp_q=0.02203861]    Sall=0.01114144  Chg-Frac= 0.1073594
+iter=   45: opt-frac=       4.8   type=3  vavg=     266.9   (average number of orbits    15.8)      S=0.001744232    [Sdisp_r=0.005390036 | Sdisp_t=0.00559891 | Sdisp_p=0.002482972 | Sdisp_q=0.002482972]    Sall=0.005732955  Chg-Frac= 0.2097731
+iter=   46: opt-frac=  4.906667   type=1  vavg=  229.6859   (average number of orbits    15.1)      S=0.002195506    [Sdisp_r=0.01010975 | Sdisp_t=0.009085699 | Sdisp_p=0.004236431 | Sdisp_q=0.004236431]    Sall=0.009112584  Chg-Frac=   0.19523
+iter=   46: opt-frac=  4.906667   type=2  vavg=  281.4839   (average number of orbits    15.2)      S=0.002335464    [Sdisp_r=0.002574532 | Sdisp_t=0.007113584 | Sdisp_p=0.003188551 | Sdisp_q=0.02202751]    Sall=0.01106151  Chg-Frac=0.09921114
+iter=   46: opt-frac=  4.906667   type=3  vavg=  266.8609   (average number of orbits    15.8)      S=0.001730326    [Sdisp_r=0.005320676 | Sdisp_t=0.005493576 | Sdisp_p=0.002440966 | Sdisp_q=0.002440966]    Sall=0.005654372  Chg-Frac= 0.1914854
+relative energy error= 1.42025  orbits=1   steps=510  pos(=7867.39|9325.58|-2187.35) vel=(11.1253|-5.20806|-31.9098)
+relative energy error= 1.66729  orbits=2   steps=529  pos(=7867.39|9325.58|-2187.35) vel=(11.1253|-5.20806|31.9098)
+iter=   47: opt-frac=  5.013333   type=1  vavg=  229.6816   (average number of orbits    15.1)      S=0.00219636    [Sdisp_r=0.01003933 | Sdisp_t=0.00899166 | Sdisp_p=0.004208577 | Sdisp_q=0.004208577]    Sall=0.009058397  Chg-Frac= 0.1939071
+iter=   47: opt-frac=  5.013333   type=2  vavg=  281.4881   (average number of orbits    15.2)      S=0.002253774    [Sdisp_r=0.002587314 | Sdisp_t=0.007154386 | Sdisp_p=0.00308608 | Sdisp_q=0.02205086]    Sall=0.01097343  Chg-Frac= 0.0964249
+iter=   47: opt-frac=  5.013333   type=3  vavg=  266.8627   (average number of orbits    15.8)      S=0.00171171    [Sdisp_r=0.005180952 | Sdisp_t=0.005444554 | Sdisp_p=0.002404201 | Sdisp_q=0.002404201]    Sall=0.005570187  Chg-Frac= 0.1944077
+iter=   48: opt-frac=      5.12   type=1  vavg=  229.6765   (average number of orbits    15.1)      S=0.002165493    [Sdisp_r=0.009963401 | Sdisp_t=0.008849294 | Sdisp_p=0.004177254 | Sdisp_q=0.004177254]    Sall=0.008957294  Chg-Frac= 0.1889823
+iter=   48: opt-frac=      5.12   type=2  vavg=  281.4847   (average number of orbits    15.2)      S=0.002262764    [Sdisp_r=0.002438472 | Sdisp_t=0.007103803 | Sdisp_p=0.003003004 | Sdisp_q=0.02204672]    Sall=0.01091076  Chg-Frac= 0.1017409
+iter=   48: opt-frac=      5.12   type=3  vavg=  266.8509   (average number of orbits    15.8)      S=0.00171744    [Sdisp_r=0.005025926 | Sdisp_t=0.005361963 | Sdisp_p=0.002340611 | Sdisp_q=0.002340611]    Sall=0.005484717  Chg-Frac= 0.1882046
+relative energy error= 1.42368  orbits=6   steps=1932  pos(=-23047.4|-4704.22|-15152.4) vel=(19.3369|-5.89349|-3.4375)
+relative energy error= 1.42368  orbits=6   steps=1932  pos(=-23047.4|-4704.22|-15152.4) vel=(15.4805|13.0001|-3.4375)
+iter=   49: opt-frac=  5.226667   type=1  vavg=  229.6791   (average number of orbits    15.1)      S=0.00214596    [Sdisp_r=0.009864558 | Sdisp_t=0.008814523 | Sdisp_p=0.004100972 | Sdisp_q=0.004100972]    Sall=0.008866216  Chg-Frac= 0.1992383
+iter=   49: opt-frac=  5.226667   type=2  vavg=  281.4803   (average number of orbits    15.2)      S=0.002214306    [Sdisp_r=0.002483388 | Sdisp_t=0.007081489 | Sdisp_p=0.002965255 | Sdisp_q=0.02198697]    Sall=0.01084358  Chg-Frac= 0.0991025
+iter=   49: opt-frac=  5.226667   type=3  vavg=  266.8574   (average number of orbits    15.8)      S=0.001681268    [Sdisp_r=0.005001116 | Sdisp_t=0.005273742 | Sdisp_p=0.002300253 | Sdisp_q=0.002300253]    Sall=0.005400109  Chg-Frac= 0.1881867
+iter=   50: opt-frac=  5.333333   type=1  vavg=  229.6887   (average number of orbits    15.1)      S=0.00207601    [Sdisp_r=0.009746617 | Sdisp_t=0.008869889 | Sdisp_p=0.004070821 | Sdisp_q=0.004070821]    Sall=0.008765547  Chg-Frac= 0.1992474
+iter=   50: opt-frac=  5.333333   type=2  vavg=  281.4868   (average number of orbits    15.2)      S=0.00220069    [Sdisp_r=0.002403482 | Sdisp_t=0.007070328 | Sdisp_p=0.00291262 | Sdisp_q=0.02195788]    Sall=0.01078677  Chg-Frac= 0.1007228
+iter=   50: opt-frac=  5.333333   type=3  vavg=  266.8462   (average number of orbits    15.8)      S=0.001665877    [Sdisp_r=0.004871898 | Sdisp_t=0.005162318 | Sdisp_p=0.002245231 | Sdisp_q=0.002245231]    Sall=0.005297046  Chg-Frac= 0.1925912
+
+writing snapshot file #5... 
+writing snapshot file: './out2/besla_005' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+relative energy error= 6.62066  orbits=10   steps=3257  pos(=-12583|-4080.58|53478.4) vel=(12.0213|-4.12392|-10.1885)
+relative energy error= 4.2108  orbits=7   steps=2287  pos(=-12583|-4080.58|53478.4) vel=(-7.3133|-10.394|-10.1885)
+relative energy error= 7.50947  orbits=1   steps=287  pos(=6769.26|3422.88|8390.58) vel=(-18.0911|29.7521|-13.1702)
+relative energy error= 1.554  orbits=1   steps=521  pos(=6769.26|3422.88|8390.58) vel=(-18.0911|29.7521|13.1702)
+iter=   51: opt-frac=      5.44   type=1  vavg=   229.683   (average number of orbits    15.1)      S=0.002027311    [Sdisp_r=0.009683907 | Sdisp_t=0.008835523 | Sdisp_p=0.004042551 | Sdisp_q=0.004042551]    Sall=0.008678444  Chg-Frac= 0.1815135
+iter=   51: opt-frac=      5.44   type=2  vavg=  281.4818   (average number of orbits    15.2)      S=0.002159225    [Sdisp_r=0.002371102 | Sdisp_t=0.007040131 | Sdisp_p=0.002842638 | Sdisp_q= 0.0218906]    Sall=0.01069534  Chg-Frac=0.09983943
+iter=   51: opt-frac=      5.44   type=3  vavg=  266.8434   (average number of orbits    15.8)      S=0.001656121    [Sdisp_r=0.004800692 | Sdisp_t=0.00505915 | Sdisp_p=0.002213672 | Sdisp_q=0.002213672]    Sall=0.005227917  Chg-Frac= 0.1906279
+iter=   52: opt-frac=  5.546667   type=1  vavg=  229.6684   (average number of orbits    15.1)      S=0.002060165    [Sdisp_r=0.009618242 | Sdisp_t=0.008722018 | Sdisp_p=0.004012386 | Sdisp_q=0.004012386]    Sall=0.008651423  Chg-Frac= 0.1827544
+iter=   52: opt-frac=  5.546667   type=2  vavg=  281.4932   (average number of orbits    15.2)      S=0.002113924    [Sdisp_r=0.002395885 | Sdisp_t=0.006900904 | Sdisp_p=0.002799415 | Sdisp_q=0.02186579]    Sall=0.01060442  Chg-Frac= 0.1028699
+iter=   52: opt-frac=  5.546667   type=3  vavg=  266.8376   (average number of orbits    15.8)      S=0.001659038    [Sdisp_r=0.004659645 | Sdisp_t=0.004971288 | Sdisp_p=0.002191201 | Sdisp_q=0.002191201]    Sall=0.005162372  Chg-Frac= 0.1895721
+iter=   53: opt-frac=  5.653333   type=1  vavg=  229.6705   (average number of orbits    15.1)      S=0.002047123    [Sdisp_r=0.009501019 | Sdisp_t=0.008718205 | Sdisp_p=0.003982311 | Sdisp_q=0.003982311]    Sall=0.008593084  Chg-Frac= 0.1822976
+iter=   53: opt-frac=  5.653333   type=2  vavg=  281.4858   (average number of orbits    15.2)      S=0.002107267    [Sdisp_r=0.002214937 | Sdisp_t=0.006728579 | Sdisp_p=0.002701958 | Sdisp_q=0.02188316]    Sall=0.01048943  Chg-Frac= 0.1001991
+iter=   53: opt-frac=  5.653333   type=3  vavg=  266.8367   (average number of orbits    15.8)      S=0.001642194    [Sdisp_r=0.00464536 | Sdisp_t=0.004908645 | Sdisp_p=0.002182745 | Sdisp_q=0.002182745]    Sall=0.005122068  Chg-Frac= 0.1904718
+iter=   54: opt-frac=      5.76   type=1  vavg=  229.6483   (average number of orbits    15.1)      S=0.002052898    [Sdisp_r=0.009463744 | Sdisp_t=0.008742953 | Sdisp_p=0.003950287 | Sdisp_q=0.003950287]    Sall=0.008579715  Chg-Frac=  0.185017
+iter=   54: opt-frac=      5.76   type=2  vavg=  281.4879   (average number of orbits    15.2)      S=0.002088692    [Sdisp_r=0.002206032 | Sdisp_t=0.006640064 | Sdisp_p=0.002658658 | Sdisp_q= 0.0218199]    Sall=0.01041985  Chg-Frac=0.09669614
+iter=   54: opt-frac=      5.76   type=3  vavg=  266.8485   (average number of orbits    15.8)      S=0.001633115    [Sdisp_r=0.004609082 | Sdisp_t=0.004865111 | Sdisp_p=0.002093356 | Sdisp_q=0.002093356]    Sall=0.005048341  Chg-Frac= 0.1900215
+iter=   55: opt-frac=  5.866667   type=1  vavg=  229.6494   (average number of orbits    15.1)      S=0.002015051    [Sdisp_r=0.00936995 | Sdisp_t=0.008688173 | Sdisp_p=0.003932324 | Sdisp_q=0.003932324]    Sall=0.008495743  Chg-Frac= 0.1926623
+iter=   55: opt-frac=  5.866667   type=2  vavg=  281.4919   (average number of orbits    15.2)      S=0.002064089    [Sdisp_r=0.002173975 | Sdisp_t=0.006564158 | Sdisp_p=0.002588693 | Sdisp_q=0.02174526]    Sall=0.01033211  Chg-Frac=0.09914435
+iter=   55: opt-frac=  5.866667   type=3  vavg=   266.836   (average number of orbits    15.8)      S=0.00162759    [Sdisp_r=0.004568281 | Sdisp_t=0.004835066 | Sdisp_p=0.002057223 | Sdisp_q=0.002057223]    Sall=0.005007039  Chg-Frac= 0.1854601
+relative energy error= 1.60516  orbits=11   steps=2747  pos(=-45191.1|594.576|22849) vel=(3.71899|-1.05919|13.0087)
+relative energy error= 1.24894  orbits=14   steps=4118  pos(=-45191.1|594.576|22849) vel=(3.71899|-1.05919|-13.0087)
+iter=   56: opt-frac=  5.973333   type=1  vavg=  229.6653   (average number of orbits    15.1)      S=0.001967429    [Sdisp_r=0.009379394 | Sdisp_t=0.008616359 | Sdisp_p=0.003908735 | Sdisp_q=0.003908735]    Sall=0.008420735  Chg-Frac= 0.1856018
+iter=   56: opt-frac=  5.973333   type=2  vavg=  281.4842   (average number of orbits    15.2)      S=0.00203731    [Sdisp_r=0.002174838 | Sdisp_t=0.006582807 | Sdisp_p=0.002528885 | Sdisp_q=0.02165131]    Sall=0.01027177  Chg-Frac= 0.1045111
+iter=   56: opt-frac=  5.973333   type=3  vavg=  266.8238   (average number of orbits    15.8)      S=0.001601174    [Sdisp_r=0.004504241 | Sdisp_t=0.004735677 | Sdisp_p=0.002031281 | Sdisp_q=0.002031281]    Sall=0.004926794  Chg-Frac= 0.1925647
+iter=   57: opt-frac=      6.08   type=1  vavg=   229.653   (average number of orbits    15.1)      S=0.001975302    [Sdisp_r=0.009262012 | Sdisp_t=0.008523328 | Sdisp_p=0.00386199 | Sdisp_q=0.00386199]    Sall=0.008352632  Chg-Frac= 0.1799659
+iter=   57: opt-frac=      6.08   type=2  vavg=  281.4828   (average number of orbits    15.2)      S=0.002029004    [Sdisp_r=0.002130527 | Sdisp_t=0.006518766 | Sdisp_p=0.002488186 | Sdisp_q= 0.0216671]    Sall=0.01023015  Chg-Frac=0.09558203
+iter=   57: opt-frac=      6.08   type=3  vavg=  266.8191   (average number of orbits    15.8)      S=0.001592907    [Sdisp_r=0.004416171 | Sdisp_t=0.004719864 | Sdisp_p=0.001994074 | Sdisp_q=0.001994074]    Sall=0.004873953  Chg-Frac=  0.177065
+iter=   58: opt-frac=  6.186667   type=1  vavg=  229.6408   (average number of orbits    15.1)      S=0.001954512    [Sdisp_r=0.009230905 | Sdisp_t=0.008432606 | Sdisp_p=0.003832818 | Sdisp_q=0.003832818]    Sall=0.008286799  Chg-Frac=  0.178827
+iter=   58: opt-frac=  6.186667   type=2  vavg=  281.4817   (average number of orbits    15.2)      S= 0.0020127    [Sdisp_r=0.002107003 | Sdisp_t=0.006473493 | Sdisp_p=0.002474698 | Sdisp_q=0.02158633]    Sall=0.01017308  Chg-Frac=0.09441215
+iter=   58: opt-frac=  6.186667   type=3  vavg=  266.8202   (average number of orbits    15.8)      S=0.001614003    [Sdisp_r=0.004359341 | Sdisp_t=0.004639871 | Sdisp_p=0.001974004 | Sdisp_q=0.001974004]    Sall=0.004850808  Chg-Frac= 0.1786288
+iter=   59: opt-frac=  6.293333   type=1  vavg=  229.6413   (average number of orbits    15.1)      S=0.001926791    [Sdisp_r=0.009181922 | Sdisp_t=0.008407939 | Sdisp_p=0.003807994 | Sdisp_q=0.003807994]    Sall=0.008228253  Chg-Frac= 0.1815367
+iter=   59: opt-frac=  6.293333   type=2  vavg=  281.4816   (average number of orbits    15.2)      S=0.001976187    [Sdisp_r=0.002120732 | Sdisp_t=0.006450982 | Sdisp_p=0.002434982 | Sdisp_q=0.02158531]    Sall=0.01012419  Chg-Frac=0.09014138
+iter=   59: opt-frac=  6.293333   type=3  vavg=  266.8027   (average number of orbits    15.8)      S=0.001570503    [Sdisp_r=0.004313786 | Sdisp_t=0.004614252 | Sdisp_p=0.001858369 | Sdisp_q=0.001858369]    Sall=0.004731697  Chg-Frac= 0.1832994
+relative energy error= 0.946399  orbits=2   steps=790  pos(=7077.23|13548|-3938.25) vel=(8.64945|-9.3579|-26.0012)
+iter=   60: opt-frac=       6.4   type=1  vavg=  229.6515   (average number of orbits    15.1)      S=0.001914666    [Sdisp_r=0.009117512 | Sdisp_t=0.008327483 | Sdisp_p=0.003784595 | Sdisp_q=0.003784595]    Sall=0.008168213  Chg-Frac= 0.1730518
+iter=   60: opt-frac=       6.4   type=2  vavg=  281.4899   (average number of orbits    15.2)      S=0.001957352    [Sdisp_r=0.002085545 | Sdisp_t=0.006454093 | Sdisp_p=0.002368465 | Sdisp_q=0.02157722]    Sall=0.01007868  Chg-Frac=0.09723912
+iter=   60: opt-frac=       6.4   type=3  vavg=  266.8009   (average number of orbits    15.8)      S=0.001577768    [Sdisp_r=0.004292123 | Sdisp_t=0.004543874 | Sdisp_p=0.001844509 | Sdisp_q=0.001844509]    Sall=0.004709021  Chg-Frac=  0.180816
+
+writing snapshot file #6... 
+writing snapshot file: './out2/besla_006' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+relative energy error= 7.50947  orbits=1   steps=287  pos(=6769.26|3422.88|8390.58) vel=(-18.0911|29.7521|-13.1702)
+relative energy error= 1.554  orbits=1   steps=521  pos(=6769.26|3422.88|8390.58) vel=(-18.0911|29.7521|13.1702)
+iter=   61: opt-frac=  6.506667   type=1  vavg=  229.6321   (average number of orbits    15.1)      S=0.00191421    [Sdisp_r=0.008976467 | Sdisp_t=0.008272499 | Sdisp_p=0.003752655 | Sdisp_q=0.003752655]    Sall=0.00810278  Chg-Frac= 0.1832818
+iter=   61: opt-frac=  6.506667   type=2  vavg=  281.4901   (average number of orbits    15.2)      S=0.001940749    [Sdisp_r=0.00208074 | Sdisp_t=0.006452417 | Sdisp_p=0.002359513 | Sdisp_q= 0.0215653]    Sall=0.01005524  Chg-Frac=0.09466517
+iter=   61: opt-frac=  6.506667   type=3  vavg=  266.8026   (average number of orbits    15.8)      S=0.001521938    [Sdisp_r=0.004246802 | Sdisp_t=0.004529478 | Sdisp_p=0.001801334 | Sdisp_q=0.001801334]    Sall=0.004616674  Chg-Frac=  0.183294
+iter=   62: opt-frac=  6.613333   type=1  vavg=   229.651   (average number of orbits    15.1)      S=0.001901211    [Sdisp_r=0.008942099 | Sdisp_t=0.008258512 | Sdisp_p=0.003749508 | Sdisp_q=0.003749508]    Sall=0.008076117  Chg-Frac= 0.1942991
+iter=   62: opt-frac=  6.613333   type=2  vavg=  281.4901   (average number of orbits    15.2)      S=0.001913477    [Sdisp_r=0.002052082 | Sdisp_t=0.006444086 | Sdisp_p=0.002313285 | Sdisp_q=0.02150662]    Sall=0.009992496  Chg-Frac=0.09408323
+iter=   62: opt-frac=  6.613333   type=3  vavg=  266.7978   (average number of orbits    15.8)      S=0.001523207    [Sdisp_r=0.004191995 | Sdisp_t=0.004451279 | Sdisp_p=0.001786004 | Sdisp_q=0.001786004]    Sall=0.004577027  Chg-Frac= 0.1771466
+iter=   63: opt-frac=      6.72   type=1  vavg=  229.6399   (average number of orbits    15.1)      S=0.001857824    [Sdisp_r=0.008916451 | Sdisp_t=0.008206881 | Sdisp_p=0.003733674 | Sdisp_q=0.003733674]    Sall=0.008005494  Chg-Frac= 0.1857857
+iter=   63: opt-frac=      6.72   type=2  vavg=   281.482   (average number of orbits    15.2)      S=0.001905205    [Sdisp_r=0.002021017 | Sdisp_t=0.006400094 | Sdisp_p=0.002294877 | Sdisp_q=0.02145256]    Sall=0.009947341  Chg-Frac= 0.1013291
+iter=   63: opt-frac=      6.72   type=3  vavg=  266.7923   (average number of orbits    15.8)      S=0.001527507    [Sdisp_r=0.004168344 | Sdisp_t= 0.0044338 | Sdisp_p=0.001774863 | Sdisp_q=0.001774863]    Sall=0.004565474  Chg-Frac= 0.1851234
+iter=   64: opt-frac=  6.826667   type=1  vavg=  229.6367   (average number of orbits    15.1)      S=0.001833297    [Sdisp_r=0.008894957 | Sdisp_t=0.008161682 | Sdisp_p=0.00374546 | Sdisp_q=0.00374546]    Sall=0.007970187  Chg-Frac= 0.1872772
+iter=   64: opt-frac=  6.826667   type=2  vavg=   281.488   (average number of orbits    15.2)      S= 0.0018722    [Sdisp_r= 0.0020232 | Sdisp_t=0.006362524 | Sdisp_p=0.00226545 | Sdisp_q=0.02147404]    Sall=0.009903504  Chg-Frac=0.08814787
+iter=   64: opt-frac=  6.826667   type=3  vavg=  266.7803   (average number of orbits    15.8)      S=0.001523633    [Sdisp_r=0.004196712 | Sdisp_t=0.004376776 | Sdisp_p=0.00175103 | Sdisp_q=0.00175103]    Sall=0.00454252  Chg-Frac= 0.1737897
+iter=   65: opt-frac=  6.933333   type=1  vavg=  229.6371   (average number of orbits    15.1)      S=0.001824849    [Sdisp_r=0.008912339 | Sdisp_t=0.008082468 | Sdisp_p=0.00372726 | Sdisp_q=0.00372726]    Sall=0.00793718  Chg-Frac= 0.1905073
+iter=   65: opt-frac=  6.933333   type=2  vavg=  281.4852   (average number of orbits    15.2)      S=0.001854558    [Sdisp_r=0.002038648 | Sdisp_t=0.006301512 | Sdisp_p=0.002214842 | Sdisp_q=0.02141152]    Sall=0.009846189  Chg-Frac=0.09273253
+iter=   65: opt-frac=  6.933333   type=3  vavg=  266.7774   (average number of orbits    15.8)      S=0.001526257    [Sdisp_r=0.004130821 | Sdisp_t=0.004388222 | Sdisp_p=0.00172506 | Sdisp_q=0.00172506]    Sall=0.004518547  Chg-Frac= 0.1735678
+iter=   66: opt-frac=      7.04   type=1  vavg=  229.6208   (average number of orbits    15.1)      S=0.001830747    [Sdisp_r=0.00892086 | Sdisp_t=0.008027289 | Sdisp_p=0.003717525 | Sdisp_q=0.003717525]    Sall=0.007926547  Chg-Frac= 0.1935636
+iter=   66: opt-frac=      7.04   type=2  vavg=   281.487   (average number of orbits    15.2)      S=0.001835963    [Sdisp_r=0.002034478 | Sdisp_t=0.006311387 | Sdisp_p=0.002207958 | Sdisp_q=0.02134085]    Sall=0.00980963  Chg-Frac=0.09956913
+iter=   66: opt-frac=      7.04   type=3  vavg=  266.7971   (average number of orbits    15.8)      S=0.001505911    [Sdisp_r=0.004152309 | Sdisp_t=0.004355589 | Sdisp_p=0.001695607 | Sdisp_q=0.001695607]    Sall=0.00448069  Chg-Frac= 0.1806488
+iter=   67: opt-frac=  7.146667   type=1  vavg=  229.6049   (average number of orbits    15.1)      S=0.001770212    [Sdisp_r=0.008864376 | Sdisp_t=0.008014587 | Sdisp_p=0.003681203 | Sdisp_q=0.003681203]    Sall=0.007830555  Chg-Frac= 0.1825045
+iter=   67: opt-frac=  7.146667   type=2  vavg=  281.4865   (average number of orbits    15.2)      S=0.001833663    [Sdisp_r=0.001958399 | Sdisp_t=0.006239021 | Sdisp_p=0.002165227 | Sdisp_q=0.02133397]    Sall=0.009757817  Chg-Frac=0.09462226
+iter=   67: opt-frac=  7.146667   type=3  vavg=  266.7896   (average number of orbits    15.8)      S=0.001523688    [Sdisp_r=0.004094614 | Sdisp_t=0.004347907 | Sdisp_p=0.001696194 | Sdisp_q=0.001696194]    Sall=0.004482415  Chg-Frac= 0.1803848
+iter=   68: opt-frac=  7.253333   type=1  vavg=  229.6134   (average number of orbits    15.1)      S=0.001770237    [Sdisp_r=0.008853724 | Sdisp_t=0.007936521 | Sdisp_p=0.00367529 | Sdisp_q=0.00367529]    Sall=0.007805443  Chg-Frac= 0.1803976
+iter=   68: opt-frac=  7.253333   type=2  vavg=  281.4846   (average number of orbits    15.2)      S=0.001819398    [Sdisp_r=0.001958936 | Sdisp_t=0.006229082 | Sdisp_p=0.002120852 | Sdisp_q=0.02128296]    Sall=0.009717355  Chg-Frac=0.08742961
+iter=   68: opt-frac=  7.253333   type=3  vavg=  266.7739   (average number of orbits    15.8)      S=0.001491141    [Sdisp_r=0.004074129 | Sdisp_t=0.004259833 | Sdisp_p=0.001680256 | Sdisp_q=0.001680256]    Sall=0.00441476  Chg-Frac= 0.1812663
+relative energy error= 0.57846  orbits=0   steps=174  pos(=-60.09|110.666|-319.415) vel=(-105.791|-30.1858|-175.508)
+iter=   69: opt-frac=      7.36   type=1  vavg=  229.6019   (average number of orbits    15.1)      S=0.001777882    [Sdisp_r=0.008834635 | Sdisp_t=0.00793721 | Sdisp_p=0.003644453 | Sdisp_q=0.003644453]    Sall=0.00779307  Chg-Frac= 0.1727547
+iter=   69: opt-frac=      7.36   type=2  vavg=  281.4776   (average number of orbits    15.2)      S=0.001830518    [Sdisp_r=0.001851874 | Sdisp_t=0.006224886 | Sdisp_p=0.002136865 | Sdisp_q= 0.0212031]    Sall=0.009684699  Chg-Frac=0.08774711
+iter=   69: opt-frac=      7.36   type=3  vavg=  266.7947   (average number of orbits    15.8)      S=0.001476561    [Sdisp_r=0.003943496 | Sdisp_t=0.004268341 | Sdisp_p=0.001671087 | Sdisp_q=0.001671087]    Sall=0.004365064  Chg-Frac= 0.1767411
+relative energy error= 0.901605  orbits=20   steps=15070  pos(=-12583|-4080.58|53478.4) vel=(2.69347|0.0875035|-10.1885)
+relative energy error= 18.1991  orbits=3   steps=848  pos(=9847.52|84.8331|21293.1) vel=(-11.6179|22.7576|4.43584)
+relative energy error= 18.1991  orbits=3   steps=848  pos(=9847.52|84.8331|21293.1) vel=(-11.2241|-22.9543|4.43584)
+iter=   70: opt-frac=  7.466667   type=1  vavg=  229.6207   (average number of orbits    15.1)      S=0.00174394    [Sdisp_r=0.00885647 | Sdisp_t=0.007955482 | Sdisp_p=0.00361279 | Sdisp_q=0.00361279]    Sall=0.007753322  Chg-Frac= 0.1818182
+iter=   70: opt-frac=  7.466667   type=2  vavg=  281.4812   (average number of orbits    15.2)      S=0.001813327    [Sdisp_r=0.001805282 | Sdisp_t=0.006198638 | Sdisp_p=0.002134338 | Sdisp_q=0.02120905]    Sall=0.009650153  Chg-Frac= 0.0959729
+iter=   70: opt-frac=  7.466667   type=3  vavg=   266.775   (average number of orbits    15.8)      S=0.001463872    [Sdisp_r=0.003865799 | Sdisp_t=0.004207723 | Sdisp_p=0.001671855 | Sdisp_q=0.001671855]    Sall=0.00431818  Chg-Frac= 0.1774209
+
+writing snapshot file #7... 
+writing snapshot file: './out2/besla_007' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+iter=   71: opt-frac=  7.573333   type=1  vavg=  229.6325   (average number of orbits    15.1)      S=0.001734862    [Sdisp_r=0.008850265 | Sdisp_t=0.00793513 | Sdisp_p=0.003625488 | Sdisp_q=0.003625488]    Sall=0.007743955  Chg-Frac= 0.1695375
+iter=   71: opt-frac=  7.573333   type=2  vavg=  281.4799   (average number of orbits    15.2)      S=0.001798131    [Sdisp_r=0.001744074 | Sdisp_t=0.006163067 | Sdisp_p=0.002114825 | Sdisp_q=0.02115188]    Sall=0.009591591  Chg-Frac=0.09329337
+iter=   71: opt-frac=  7.573333   type=3  vavg=  266.7645   (average number of orbits    15.8)      S=0.001437378    [Sdisp_r=0.003872159 | Sdisp_t=0.004162978 | Sdisp_p=0.001668395 | Sdisp_q=0.001668395]    Sall=0.00428036  Chg-Frac= 0.1735576
+relative energy error= 10.9752  orbits=0   steps=181  pos(=2178.77|-4389.75|-8211.66) vel=(-16.8116|6.64146|-36.3918)
+relative energy error= 10.9039  orbits=1   steps=478  pos(=2178.77|-4389.75|-8211.66) vel=(-16.8116|6.64146|36.3918)
+relative energy error= 4.2149  orbits=1   steps=237  pos(=925.208|3031.23|41.4945) vel=(-66.8177|-12.653|17.8025)
+relative energy error= 4.08893  orbits=0   steps=160  pos(=925.208|3031.23|41.4945) vel=(-48.3632|47.8091|17.8025)
+iter=   72: opt-frac=      7.68   type=1  vavg=  229.6374   (average number of orbits    15.1)      S=0.001733865    [Sdisp_r=0.00875418 | Sdisp_t=0.007917982 | Sdisp_p=0.003586937 | Sdisp_q=0.003586937]    Sall=0.007695374  Chg-Frac= 0.1815529
+iter=   72: opt-frac=      7.68   type=2  vavg=  281.4865   (average number of orbits    15.2)      S=0.001772929    [Sdisp_r=0.001768612 | Sdisp_t=0.006147979 | Sdisp_p=0.002096324 | Sdisp_q=0.02113108]    Sall=0.009558929  Chg-Frac=  0.093292
+iter=   72: opt-frac=      7.68   type=3  vavg=  266.7541   (average number of orbits    15.8)      S=0.001443147    [Sdisp_r=0.003828123 | Sdisp_t=0.004160616 | Sdisp_p=0.001654082 | Sdisp_q=0.001654082]    Sall=0.004267373  Chg-Frac= 0.1673656
+relative energy error= 2.27544  orbits=3   steps=960  pos(=3817.31|14298.2|12011.7) vel=(16.663|-21.0365|-4.78081)
+iter=   73: opt-frac=  7.786667   type=1  vavg=  229.6272   (average number of orbits    15.1)      S=0.001695518    [Sdisp_r=0.008693303 | Sdisp_t=0.00782987 | Sdisp_p=0.00350546 | Sdisp_q=0.00350546]    Sall=0.007579042  Chg-Frac= 0.1764817
+iter=   73: opt-frac=  7.786667   type=2  vavg=  281.4815   (average number of orbits    15.2)      S=0.001779003    [Sdisp_r=0.001689747 | Sdisp_t=0.006072559 | Sdisp_p=0.002085151 | Sdisp_q=0.02108513]    Sall=0.009512149  Chg-Frac=0.08268637
+iter=   73: opt-frac=  7.786667   type=3  vavg=  266.7567   (average number of orbits    15.8)      S=0.001461704    [Sdisp_r=0.003762391 | Sdisp_t=0.004117553 | Sdisp_p=0.001612449 | Sdisp_q=0.001612449]    Sall=0.004237914  Chg-Frac= 0.1786649
+iter=   74: opt-frac=  7.893333   type=1  vavg=  229.6294   (average number of orbits    15.1)      S=0.001673337    [Sdisp_r=0.008632676 | Sdisp_t=0.00787593 | Sdisp_p=0.003490074 | Sdisp_q=0.003490074]    Sall=0.007545526  Chg-Frac= 0.1795351
+iter=   74: opt-frac=  7.893333   type=2  vavg=  281.4822   (average number of orbits    15.2)      S=0.00172608    [Sdisp_r=0.001725444 | Sdisp_t=0.006036392 | Sdisp_p=0.002045431 | Sdisp_q=0.02111646]    Sall=0.00945701  Chg-Frac=0.08656716
+iter=   74: opt-frac=  7.893333   type=3  vavg=  266.7571   (average number of orbits    15.8)      S=0.001468418    [Sdisp_r=0.003704567 | Sdisp_t=0.004076214 | Sdisp_p=0.001607459 | Sdisp_q=0.001607459]    Sall=0.004217343  Chg-Frac= 0.1843126
+iter=   75: opt-frac=         8   type=1  vavg=  229.6147   (average number of orbits    15.1)      S=0.001664302    [Sdisp_r=0.008600412 | Sdisp_t=0.007855522 | Sdisp_p=0.003463764 | Sdisp_q=0.003463764]    Sall=0.007510168  Chg-Frac= 0.1789081
+iter=   75: opt-frac=         8   type=2  vavg=  281.4783   (average number of orbits    15.2)      S=0.001730961    [Sdisp_r=0.001725312 | Sdisp_t=0.005991544 | Sdisp_p=0.001952757 | Sdisp_q=0.02111667]    Sall=0.009427531  Chg-Frac=0.09251267
+iter=   75: opt-frac=         8   type=3  vavg=    266.74   (average number of orbits    15.8)      S=0.001419171    [Sdisp_r=0.003740653 | Sdisp_t=0.00401427 | Sdisp_p=0.001621293 | Sdisp_q=0.001621293]    Sall=0.004168548  Chg-Frac= 0.1767197
+iter=   76: opt-frac=  8.106667   type=1  vavg=  229.6197   (average number of orbits    15.1)      S=0.001638739    [Sdisp_r=0.008553406 | Sdisp_t=0.007827924 | Sdisp_p=0.003437866 | Sdisp_q=0.003437866]    Sall=0.007453004  Chg-Frac= 0.1763805
+iter=   76: opt-frac=  8.106667   type=2  vavg=  281.4829   (average number of orbits    15.2)      S= 0.0017226    [Sdisp_r=0.00173205 | Sdisp_t=0.005921924 | Sdisp_p=0.001805114 | Sdisp_q=0.02108697]    Sall=0.009359113  Chg-Frac=0.08262928
+iter=   76: opt-frac=  8.106667   type=3  vavg=  266.7358   (average number of orbits    15.8)      S=0.001463329    [Sdisp_r=0.003615033 | Sdisp_t=0.004046652 | Sdisp_p=0.00160153 | Sdisp_q=0.00160153]    Sall=0.004179515  Chg-Frac= 0.1663265
+relative energy error= 0.678803  orbits=6   steps=2130  pos(=-23047.4|-4704.22|-15152.4) vel=(-21.27|-4.15205|1.44767)
+iter=   77: opt-frac=  8.213333   type=1  vavg=  229.6103   (average number of orbits    15.1)      S=0.001661007    [Sdisp_r=0.008579243 | Sdisp_t=0.007807198 | Sdisp_p=0.00342321 | Sdisp_q=0.00342321]    Sall=0.007469222  Chg-Frac= 0.1789435
+iter=   77: opt-frac=  8.213333   type=2  vavg=  281.4786   (average number of orbits    15.2)      S=0.001717782    [Sdisp_r=0.001675653 | Sdisp_t=0.005909538 | Sdisp_p=0.001794578 | Sdisp_q=0.02104089]    Sall=0.009322945  Chg-Frac=0.09071152
+iter=   77: opt-frac=  8.213333   type=3  vavg=  266.7357   (average number of orbits    15.8)      S=0.001442924    [Sdisp_r=0.003624219 | Sdisp_t=0.004042666 | Sdisp_p=0.00160048 | Sdisp_q=0.00160048]    Sall=0.004159885  Chg-Frac= 0.1735099
+iter=   78: opt-frac=      8.32   type=1  vavg=  229.5907   (average number of orbits    15.1)      S=0.001656912    [Sdisp_r=0.008532229 | Sdisp_t=0.007823084 | Sdisp_p=0.003401697 | Sdisp_q=0.003401697]    Sall=0.007446588  Chg-Frac= 0.1752694
+iter=   78: opt-frac=      8.32   type=2  vavg=  281.4769   (average number of orbits    15.2)      S=0.001702865    [Sdisp_r=0.001682035 | Sdisp_t=0.00590665 | Sdisp_p=0.001739595 | Sdisp_q=0.02095698]    Sall=0.00927418  Chg-Frac=0.08813017
+iter=   78: opt-frac=      8.32   type=3  vavg=  266.7194   (average number of orbits    15.8)      S=0.001430585    [Sdisp_r=0.003613171 | Sdisp_t=0.004000506 | Sdisp_p=0.001594977 | Sdisp_q=0.001594977]    Sall=0.004131493  Chg-Frac= 0.1717331
+relative energy error= 24.0877  orbits=10   steps=6517  pos(=-12583|-4080.58|53478.4) vel=(2.23221|1.50985|-16.5133)
+relative energy error= 1.34768  orbits=19   steps=7375  pos(=-12583|-4080.58|53478.4) vel=(2.23221|1.50985|10.1885)
+relative energy error= 20.9133  orbits=10   steps=4157  pos(=-12583|-4080.58|53478.4) vel=(2.23221|1.50985|16.5133)
+iter=   79: opt-frac=  8.426667   type=1  vavg=   229.603   (average number of orbits    15.1)      S=0.001662864    [Sdisp_r=0.008491046 | Sdisp_t=0.007748519 | Sdisp_p=0.003406977 | Sdisp_q=0.003406977]    Sall=0.007426244  Chg-Frac= 0.1878191
+iter=   79: opt-frac=  8.426667   type=2  vavg=  281.4712   (average number of orbits    15.2)      S=0.001694518    [Sdisp_r=0.001630637 | Sdisp_t=0.005886919 | Sdisp_p=0.001753563 | Sdisp_q=0.02090128]    Sall=0.009237619  Chg-Frac=0.08634386
+iter=   79: opt-frac=  8.426667   type=3  vavg=  266.7363   (average number of orbits    15.8)      S=0.001402476    [Sdisp_r=0.003573799 | Sdisp_t=0.004012401 | Sdisp_p=0.001601797 | Sdisp_q=0.001601797]    Sall=0.004099925  Chg-Frac= 0.1640544
+iter=   80: opt-frac=  8.533333   type=1  vavg=  229.5793   (average number of orbits    15.1)      S=0.001646333    [Sdisp_r=0.008465089 | Sdisp_t=0.007733566 | Sdisp_p=0.003369611 | Sdisp_q=0.003369611]    Sall=0.007380802  Chg-Frac= 0.1813413
+iter=   80: opt-frac=  8.533333   type=2  vavg=  281.4748   (average number of orbits    15.2)      S=0.001684154    [Sdisp_r=0.001626452 | Sdisp_t=0.005863654 | Sdisp_p=0.001727538 | Sdisp_q=0.02086207]    Sall=0.009204082  Chg-Frac= 0.0887585
+iter=   80: opt-frac=  8.533333   type=3  vavg=  266.7256   (average number of orbits    15.8)      S= 0.0013933    [Sdisp_r=0.003552641 | Sdisp_t=0.004009315 | Sdisp_p= 0.0016106 | Sdisp_q= 0.0016106]    Sall=0.00408909  Chg-Frac= 0.1714367
+
+writing snapshot file #8... 
+writing snapshot file: './out2/besla_008' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+iter=   81: opt-frac=      8.64   type=1  vavg=  229.5872   (average number of orbits    15.1)      S=0.001627994    [Sdisp_r=0.008420585 | Sdisp_t=0.007674974 | Sdisp_p=0.00336712 | Sdisp_q=0.00336712]    Sall=0.007335444  Chg-Frac= 0.1730986
+iter=   81: opt-frac=      8.64   type=2  vavg=  281.4724   (average number of orbits    15.2)      S=0.001694548    [Sdisp_r=0.001545659 | Sdisp_t=0.005878065 | Sdisp_p=0.001738549 | Sdisp_q=0.02078901]    Sall=0.00918237  Chg-Frac=0.08632551
+iter=   81: opt-frac=      8.64   type=3  vavg=  266.7241   (average number of orbits    15.8)      S=0.00140557    [Sdisp_r=0.003499648 | Sdisp_t= 0.0040217 | Sdisp_p=0.00160183 | Sdisp_q=0.00160183]    Sall=0.004086822  Chg-Frac= 0.1798421
+iter=   82: opt-frac=  8.746667   type=1  vavg=  229.6036   (average number of orbits    15.1)      S=0.001604444    [Sdisp_r=0.008446582 | Sdisp_t=0.007672416 | Sdisp_p=0.003363538 | Sdisp_q=0.003363538]    Sall=0.007315963  Chg-Frac= 0.1765369
+iter=   82: opt-frac=  8.746667   type=2  vavg=  281.4727   (average number of orbits    15.2)      S=0.001683924    [Sdisp_r=0.001557686 | Sdisp_t=0.005825917 | Sdisp_p=0.001709023 | Sdisp_q=0.02079485]    Sall=0.009155793  Chg-Frac=0.08775548
+iter=   82: opt-frac=  8.746667   type=3  vavg=  266.7134   (average number of orbits    15.8)      S=0.001427052    [Sdisp_r=0.003472396 | Sdisp_t=0.004004689 | Sdisp_p=0.001597892 | Sdisp_q=0.001597892]    Sall=0.004095269  Chg-Frac= 0.1744577
+iter=   83: opt-frac=  8.853333   type=1  vavg=  229.6007   (average number of orbits    15.1)      S=0.001599893    [Sdisp_r=0.008352767 | Sdisp_t=0.00768693 | Sdisp_p=0.00335691 | Sdisp_q=0.00335691]    Sall=0.007288272  Chg-Frac= 0.1776445
+iter=   83: opt-frac=  8.853333   type=2  vavg=  281.4673   (average number of orbits    15.2)      S=0.001671495    [Sdisp_r=0.001549232 | Sdisp_t=0.005791748 | Sdisp_p=0.001686732 | Sdisp_q=0.02079291]    Sall=0.009126651  Chg-Frac=0.08544304
+iter=   83: opt-frac=  8.853333   type=3  vavg=  266.7271   (average number of orbits    15.8)      S=0.001403911    [Sdisp_r=0.003468801 | Sdisp_t=0.003943115 | Sdisp_p=0.00160045 | Sdisp_q=0.00160045]    Sall=0.004057115  Chg-Frac= 0.1799112
+relative energy error= 1.39965  orbits=16   steps=9936  pos(=-45191.1|594.576|22849) vel=(-10.7074|-0.86938|6.89048)
+iter=   84: opt-frac=      8.96   type=1  vavg=  229.5865   (average number of orbits    15.1)      S=0.001626799    [Sdisp_r=0.008318634 | Sdisp_t=0.007663901 | Sdisp_p=0.003347171 | Sdisp_q=0.003347171]    Sall=0.007296019  Chg-Frac= 0.1772625
+iter=   84: opt-frac=      8.96   type=2  vavg=  281.4699   (average number of orbits    15.2)      S=0.001668094    [Sdisp_r=0.00154789 | Sdisp_t=0.005736185 | Sdisp_p=0.001693296 | Sdisp_q=0.02078489]    Sall=0.009108659  Chg-Frac=0.09000465
+iter=   84: opt-frac=      8.96   type=3  vavg=  266.7126   (average number of orbits    15.8)      S=0.001380615    [Sdisp_r=0.003429468 | Sdisp_t=0.003884073 | Sdisp_p=0.001586824 | Sdisp_q=0.001586824]    Sall=0.004002412  Chg-Frac=  0.173097
+iter=   85: opt-frac=  9.066667   type=1  vavg=  229.5817   (average number of orbits    15.1)      S=0.00158533    [Sdisp_r=0.008290632 | Sdisp_t=0.007717693 | Sdisp_p=0.003359297 | Sdisp_q=0.003359297]    Sall=0.00726706  Chg-Frac= 0.1744998
+iter=   85: opt-frac=  9.066667   type=2  vavg=  281.4691   (average number of orbits    15.2)      S=0.001653514    [Sdisp_r=0.00155252 | Sdisp_t=0.005684583 | Sdisp_p=0.001680252 | Sdisp_q=0.02079286]    Sall=0.009081068  Chg-Frac=0.09132893
+iter=   85: opt-frac=  9.066667   type=3  vavg=  266.7374   (average number of orbits    15.8)      S=0.001405471    [Sdisp_r=0.003423536 | Sdisp_t=0.003867594 | Sdisp_p=0.001565948 | Sdisp_q=0.001565948]    Sall=0.004011228  Chg-Frac=  0.169446
+iter=   86: opt-frac=  9.173333   type=1  vavg=  229.5637   (average number of orbits    15.1)      S=0.00160499    [Sdisp_r=0.008200813 | Sdisp_t=0.007729795 | Sdisp_p=0.003353394 | Sdisp_q=0.003353394]    Sall=0.007264339  Chg-Frac=  0.165806
+iter=   86: opt-frac=  9.173333   type=2  vavg=   281.464   (average number of orbits    15.2)      S=0.001664591    [Sdisp_r=0.001508099 | Sdisp_t=0.005555691 | Sdisp_p=0.001684113 | Sdisp_q=0.02072211]    Sall=0.009032095  Chg-Frac=0.08816403
+iter=   86: opt-frac=  9.173333   type=3  vavg=  266.7396   (average number of orbits    15.8)      S=0.00139687    [Sdisp_r=0.003429563 | Sdisp_t=0.003785174 | Sdisp_p=0.001568851 | Sdisp_q=0.001568851]    Sall=0.00398498  Chg-Frac= 0.1612205
+iter=   87: opt-frac=      9.28   type=1  vavg=  229.5752   (average number of orbits    15.1)      S=0.001561991    [Sdisp_r=0.008258714 | Sdisp_t=0.00777181 | Sdisp_p=0.00334914 | Sdisp_q=0.00334914]    Sall=0.007244192  Chg-Frac= 0.1787715
+iter=   87: opt-frac=      9.28   type=2  vavg=  281.4707   (average number of orbits    15.2)      S=0.001642147    [Sdisp_r=0.00153417 | Sdisp_t=0.005499679 | Sdisp_p=0.001671881 | Sdisp_q=0.02070958]    Sall=0.008995975  Chg-Frac=0.09237787
+iter=   87: opt-frac=      9.28   type=3  vavg=  266.7222   (average number of orbits    15.8)      S=0.001393241    [Sdisp_r=0.003394793 | Sdisp_t=0.003734922 | Sdisp_p=0.001563838 | Sdisp_q=0.001563838]    Sall=0.003957589  Chg-Frac= 0.1692365
+relative energy error= 1.34768  orbits=19   steps=7375  pos(=-12583|-4080.58|53478.4) vel=(2.23221|1.50985|10.1885)
+iter=   88: opt-frac=  9.386667   type=1  vavg=  229.5721   (average number of orbits    15.1)      S=0.001596771    [Sdisp_r=0.008234712 | Sdisp_t=0.007793816 | Sdisp_p=0.00331607 | Sdisp_q=0.00331607]    Sall=0.007261938  Chg-Frac= 0.1805776
+iter=   88: opt-frac=  9.386667   type=2  vavg=  281.4632   (average number of orbits    15.2)      S=0.001634559    [Sdisp_r=0.001551006 | Sdisp_t=0.005471352 | Sdisp_p=0.001687285 | Sdisp_q=0.02064198]    Sall=0.008972466  Chg-Frac=0.09140339
+iter=   88: opt-frac=  9.386667   type=3  vavg=  266.7293   (average number of orbits    15.8)      S=0.001382068    [Sdisp_r=0.003355666 | Sdisp_t=0.003693389 | Sdisp_p=0.001545275 | Sdisp_q=0.001545275]    Sall=0.003916969  Chg-Frac= 0.1671995
+iter=   89: opt-frac=  9.493333   type=1  vavg=  229.5621   (average number of orbits    15.1)      S=0.001573075    [Sdisp_r=0.008220901 | Sdisp_t=0.007721655 | Sdisp_p=0.003300264 | Sdisp_q=0.003300264]    Sall=0.007208846  Chg-Frac= 0.1682287
+iter=   89: opt-frac=  9.493333   type=2  vavg=  281.4675   (average number of orbits    15.2)      S=0.001604219    [Sdisp_r=0.001546044 | Sdisp_t=0.005472667 | Sdisp_p=0.001642124 | Sdisp_q=0.02063937]    Sall=0.008929271  Chg-Frac=0.08505683
+iter=   89: opt-frac=  9.493333   type=3  vavg=  266.7294   (average number of orbits    15.8)      S=0.001404065    [Sdisp_r=0.003342313 | Sdisp_t=0.003718832 | Sdisp_p=0.001529016 | Sdisp_q=0.001529016]    Sall=0.003933859  Chg-Frac= 0.1680823
+iter=   90: opt-frac=       9.6   type=1  vavg=  229.5621   (average number of orbits    15.1)      S=0.001559606    [Sdisp_r=0.008176043 | Sdisp_t=0.00771618 | Sdisp_p=0.003320114 | Sdisp_q=0.003320114]    Sall=0.007192718  Chg-Frac= 0.1753356
+iter=   90: opt-frac=       9.6   type=2  vavg=  281.4774   (average number of orbits    15.2)      S=0.001585908    [Sdisp_r=0.001573038 | Sdisp_t=0.005460364 | Sdisp_p=0.00162526 | Sdisp_q=0.02062911]    Sall=0.008907851  Chg-Frac=0.08525889
+iter=   90: opt-frac=       9.6   type=3  vavg=  266.7314   (average number of orbits    15.8)      S=0.001362605    [Sdisp_r=0.003338215 | Sdisp_t=0.003710573 | Sdisp_p=0.001534903 | Sdisp_q=0.001534903]    Sall=0.003892254  Chg-Frac= 0.1747118
+
+writing snapshot file #9... 
+writing snapshot file: './out2/besla_009' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+relative energy error= 1.81408  orbits=0   steps=174  pos(=-3104.59|-748.443|1827.21) vel=(-10.5349|-49.8028|39.9338)
+relative energy error= 1.91527  orbits=0   steps=209  pos(=-3104.59|-748.443|1827.21) vel=(32.0713|-39.5315|39.9338)
+iter=   91: opt-frac=  9.706667   type=1  vavg=  229.5596   (average number of orbits    15.1)      S=0.001569284    [Sdisp_r=0.008053742 | Sdisp_t=0.007677643 | Sdisp_p=0.00330054 | Sdisp_q=0.00330054]    Sall=0.007152401  Chg-Frac= 0.1678105
+iter=   91: opt-frac=  9.706667   type=2  vavg=  281.4722   (average number of orbits    15.2)      S=0.001572274    [Sdisp_r=0.001562482 | Sdisp_t=0.005471027 | Sdisp_p=0.001606698 | Sdisp_q=0.02056828]    Sall=0.008874397  Chg-Frac=0.08674289
+iter=   91: opt-frac=  9.706667   type=3  vavg=  266.7113   (average number of orbits    15.8)      S=0.001367394    [Sdisp_r=0.003347715 | Sdisp_t=0.003698921 | Sdisp_p=0.001513065 | Sdisp_q=0.001513065]    Sall=0.003885585  Chg-Frac= 0.1665121
+iter=   92: opt-frac=  9.813333   type=1  vavg=  229.5668   (average number of orbits    15.1)      S=0.001584874    [Sdisp_r=0.008039978 | Sdisp_t=0.007682188 | Sdisp_p=0.003293766 | Sdisp_q=0.003293766]    Sall=0.007162299  Chg-Frac= 0.1729486
+iter=   92: opt-frac=  9.813333   type=2  vavg=  281.4774   (average number of orbits    15.2)      S=0.001552132    [Sdisp_r=0.001601206 | Sdisp_t=0.005417825 | Sdisp_p=0.001601342 | Sdisp_q=0.02057131]    Sall=0.008850053  Chg-Frac=0.08582055
+iter=   92: opt-frac=  9.813333   type=3  vavg=  266.7168   (average number of orbits    15.8)      S=0.001360322    [Sdisp_r=0.00336899 | Sdisp_t=0.003719826 | Sdisp_p=0.001519856 | Sdisp_q=0.001519856]    Sall=0.003892455  Chg-Frac= 0.1736753
+iter=   93: opt-frac=      9.92   type=1  vavg=  229.5626   (average number of orbits    15.1)      S=0.001556804    [Sdisp_r=0.00805548 | Sdisp_t=0.007685792 | Sdisp_p=0.003274648 | Sdisp_q=0.003274648]    Sall=0.007129446  Chg-Frac= 0.1839849
+iter=   93: opt-frac=      9.92   type=2  vavg=  281.4742   (average number of orbits    15.2)      S=0.001551393    [Sdisp_r=0.001602108 | Sdisp_t=0.00542649 | Sdisp_p=0.001566857 | Sdisp_q=0.02053958]    Sall=0.008835151  Chg-Frac=0.09471733
+iter=   93: opt-frac=      9.92   type=3  vavg=   266.705   (average number of orbits    15.8)      S=0.001393271    [Sdisp_r=0.003356009 | Sdisp_t=0.00370065 | Sdisp_p=0.001513533 | Sdisp_q=0.001513533]    Sall=0.003914202  Chg-Frac= 0.1746107
+iter=   94: opt-frac=  10.02667   type=1  vavg=  229.5771   (average number of orbits    15.1)      S=0.001556494    [Sdisp_r=0.007929678 | Sdisp_t=0.007735634 | Sdisp_p=0.003270476 | Sdisp_q=0.003270476]    Sall=0.00710806  Chg-Frac= 0.1792135
+iter=   94: opt-frac=  10.02667   type=2  vavg=  281.4725   (average number of orbits    15.2)      S=0.00151618    [Sdisp_r=0.001618433 | Sdisp_t=0.005412177 | Sdisp_p=0.001577159 | Sdisp_q=0.02044411]    Sall=0.00877915  Chg-Frac=0.08917018
+iter=   94: opt-frac=  10.02667   type=3  vavg=  266.6851   (average number of orbits    15.8)      S=0.001371582    [Sdisp_r=0.003378831 | Sdisp_t=0.003664927 | Sdisp_p=0.001527584 | Sdisp_q=0.001527584]    Sall=0.003896314  Chg-Frac= 0.1746598
+iter=   95: opt-frac=  10.13333   type=1  vavg=  229.5691   (average number of orbits    15.1)      S=0.001570719    [Sdisp_r=0.007900493 | Sdisp_t=0.00767247 | Sdisp_p=0.003266929 | Sdisp_q=0.003266929]    Sall=0.007097425  Chg-Frac= 0.1698345
+iter=   95: opt-frac=  10.13333   type=2  vavg=  281.4713   (average number of orbits    15.2)      S=0.001507513    [Sdisp_r=0.001580667 | Sdisp_t=0.005400649 | Sdisp_p=0.001552681 | Sdisp_q=0.02043528]    Sall=0.008749833  Chg-Frac=0.08342686
+iter=   95: opt-frac=  10.13333   type=3  vavg=  266.6889   (average number of orbits    15.8)      S=0.001351399    [Sdisp_r=0.003343649 | Sdisp_t=0.003577592 | Sdisp_p=0.001509022 | Sdisp_q=0.001509022]    Sall=0.00383622  Chg-Frac= 0.1670549
+iter=   96: opt-frac=     10.24   type=1  vavg=  229.5783   (average number of orbits    15.1)      S=0.001555047    [Sdisp_r=0.007806171 | Sdisp_t=0.007700688 | Sdisp_p=0.003284834 | Sdisp_q=0.003284834]    Sall=0.007074178  Chg-Frac= 0.1820366
+iter=   96: opt-frac=     10.24   type=2  vavg=  281.4673   (average number of orbits    15.2)      S=0.001522332    [Sdisp_r=0.001577729 | Sdisp_t=0.005420354 | Sdisp_p=0.001547949 | Sdisp_q=0.02040177]    Sall=0.008759282  Chg-Frac=0.08211783
+iter=   96: opt-frac=     10.24   type=3  vavg=  266.7029   (average number of orbits    15.8)      S=0.001376865    [Sdisp_r=0.003234681 | Sdisp_t=0.003572965 | Sdisp_p=0.001527246 | Sdisp_q=0.001527246]    Sall=0.003842399  Chg-Frac= 0.1613936
+relative energy error= 3.71826  orbits=1   steps=243  pos(=-3716.4|-7527.3|-5301.66) vel=(-21.9106|-4.97311|32.4198)
+relative energy error= 0.509479  orbits=0   steps=197  pos(=-3716.4|-7527.3|-5301.66) vel=(-21.9106|-4.97311|-32.4198)
+iter=   97: opt-frac=  10.34667   type=1  vavg=  229.5678   (average number of orbits    15.1)      S=0.001551891    [Sdisp_r=0.007832799 | Sdisp_t=0.007675409 | Sdisp_p=0.003277315 | Sdisp_q=0.003277315]    Sall= 0.0070676  Chg-Frac= 0.1689463
+iter=   97: opt-frac=  10.34667   type=2  vavg=  281.4729   (average number of orbits    15.2)      S=0.001501084    [Sdisp_r=0.001581971 | Sdisp_t=0.005389288 | Sdisp_p=0.001566581 | Sdisp_q=0.02038927]    Sall=0.008732861  Chg-Frac=0.07946462
+iter=   97: opt-frac=  10.34667   type=3  vavg=  266.7018   (average number of orbits    15.8)      S=0.001409209    [Sdisp_r=0.003238116 | Sdisp_t=0.003616553 | Sdisp_p=0.001501818 | Sdisp_q=0.001501818]    Sall=0.003873785  Chg-Frac= 0.1841344
+relative energy error= 0.722857  orbits=16   steps=6003  pos(=-12583|-4080.58|53478.4) vel=(-3.59307|-0.379238|-10.1885)
+relative energy error= 2.97093  orbits=1   steps=521  pos(=6769.26|3422.88|8390.58) vel=(-20.9173|28.323|8.55016)
+iter=   98: opt-frac=  10.45333   type=1  vavg=   229.576   (average number of orbits    15.1)      S=0.001533484    [Sdisp_r=0.007763698 | Sdisp_t=0.007679111 | Sdisp_p=0.003264594 | Sdisp_q=0.003264594]    Sall=0.007026484  Chg-Frac= 0.1685852
+iter=   98: opt-frac=  10.45333   type=2  vavg=  281.4712   (average number of orbits    15.2)      S=0.001492495    [Sdisp_r=0.001565924 | Sdisp_t=0.005355794 | Sdisp_p=0.001577903 | Sdisp_q=0.02035194]    Sall=0.008705385  Chg-Frac=0.08078808
+iter=   98: opt-frac=  10.45333   type=3  vavg=  266.7112   (average number of orbits    15.8)      S=0.001381504    [Sdisp_r=0.00320487 | Sdisp_t=0.003592378 | Sdisp_p=0.001486992 | Sdisp_q=0.001486992]    Sall=0.003824312  Chg-Frac= 0.1804143
+relative energy error= 1.29808  orbits=1   steps=491  pos(=-237.084|-6808.35|-7339.58) vel=(-22.3854|-29.8809|5.9805)
+relative energy error= 1.05278  orbits=2   steps=692  pos(=-237.084|-6808.35|-7339.58) vel=(-20.2526|31.3656|5.9805)
+iter=   99: opt-frac=     10.56   type=1  vavg=  229.5579   (average number of orbits    15.1)      S=0.001543232    [Sdisp_r=0.007759786 | Sdisp_t=0.007682985 | Sdisp_p=0.003246516 | Sdisp_q=0.003246516]    Sall=0.007027182  Chg-Frac= 0.1713002
+iter=   99: opt-frac=     10.56   type=2  vavg=   281.479   (average number of orbits    15.2)      S=0.001462958    [Sdisp_r=0.001560961 | Sdisp_t=0.005354254 | Sdisp_p=0.001552145 | Sdisp_q=0.02037717]    Sall=0.008674089  Chg-Frac=0.08158486
+iter=   99: opt-frac=     10.56   type=3  vavg=  266.6859   (average number of orbits    15.8)      S=0.001350209    [Sdisp_r=0.003231389 | Sdisp_t=0.003533226 | Sdisp_p=0.001472359 | Sdisp_q=0.001472359]    Sall=0.003777542  Chg-Frac= 0.1660558
+iter=  100: opt-frac=  10.66667   type=1  vavg=  229.5752   (average number of orbits    15.1)      S=0.001548807    [Sdisp_r=0.007768936 | Sdisp_t=0.007691365 | Sdisp_p=0.003239544 | Sdisp_q=0.003239544]    Sall=0.007033655  Chg-Frac= 0.1661001
+iter=  100: opt-frac=  10.66667   type=2  vavg=  281.4735   (average number of orbits    15.2)      S=0.001464003    [Sdisp_r=0.001557303 | Sdisp_t=0.005365353 | Sdisp_p=0.001538318 | Sdisp_q=0.02033961]    Sall=0.008664148  Chg-Frac= 0.0776204
+iter=  100: opt-frac=  10.66667   type=3  vavg=  266.6951   (average number of orbits    15.8)      S=0.001346892    [Sdisp_r=0.00322353 | Sdisp_t=0.003494205 | Sdisp_p=0.001472247 | Sdisp_q=0.001472247]    Sall=0.003762449  Chg-Frac= 0.1719963
+
+writing snapshot file #10... 
+writing snapshot file: './out2/besla_010' (file 1 of 1)
+writing block 0 (Coordinates)...
+writing block 1 (Velocities)...
+writing block 2 (ParticleIDs)...
+writing block 3 (Masses)...
+writing block 4 (VelocitiesTheory)...
+done with writing snapshot.
+
+iter=  101: opt-frac=  10.77333   type=1  vavg=   229.561   (average number of orbits    15.1)      S=0.001553558    [Sdisp_r=0.007731128 | Sdisp_t=0.007657713 | Sdisp_p=0.003252573 | Sdisp_q=0.003252573]    Sall=0.007027054  Chg-Frac= 0.1721667
+iter=  101: opt-frac=  10.77333   type=2  vavg=  281.4753   (average number of orbits    15.2)      S=0.001435993    [Sdisp_r=0.001573237 | Sdisp_t=0.00529292 | Sdisp_p=0.001531297 | Sdisp_q=0.02032852]    Sall=0.008617485  Chg-Frac=0.08766385
+iter=  101: opt-frac=  10.77333   type=3  vavg=  266.6962   (average number of orbits    15.8)      S=0.001364573    [Sdisp_r=0.003218365 | Sdisp_t=0.003493691 | Sdisp_p=0.001494461 | Sdisp_q=0.001494461]    Sall=0.003789818  Chg-Frac= 0.1746733
+Maximum number of steps reached.
+endrun called, calling MPI_Finalize()
+bye!
+
+
+
+PS:
+
+Read file <lsf.err> for stderr output of this job.
+

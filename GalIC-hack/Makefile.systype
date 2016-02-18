@@ -33,6 +33,7 @@
 #SYSTYPE="odyssey"
 #SYSTYPE="odyssey-intel"
 #SYSTYPE="odyssey-opteron"
-SYSTYPE="Ubuntu"
+#SYSTYPE="Ubuntu"
 #SYSTYPE="Centos5-intel"
 #SYSTYPE="Centos5-Gnu"
+SYSTYPE="Elgato"

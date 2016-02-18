@@ -61,7 +61,7 @@
 # If you add an ifeq for a new system below, also add that systype to
 # Template-Makefile.systype
 
-EXEC   = GalIC
+EXEC   = GalIC-hack
 CONFIG   = Config.sh
 BUILD_DIR = build
 SRC_DIR = src
@@ -90,134 +90,39 @@ CONFIGVARS := $(shell cat $(BUILD_DIR)/galicconfig.h)
 
 
 MPICHLIB = -lmpich
-GMPLIB   = -lgmp
+#GMPLIB   = -lgmp
 GSLLIB   = -lgsl -lgslcblas
 MATHLIB  = -lm
 
 
 
-ifeq ($(SYSTYPE),"Ubuntu")
-CC       =  mpicc   # sets the C-compiler
-OPTIMIZE =   -ggdb -O3 -Wall -Wno-format-security -Wno-unknown-pragmas
-#ifeq (NUM_THREADS,$(findstring NUM_THREADS,$(CONFIGVARS)))
-#OPTIMIZE +=  -fopenmp
-#MPI_COMPILE_FLAGS = $(shell mpicc --showme:compile)
-#CC       =  gcc  $(MPI_COMPILE_FLAGS)      # to replace clang with gcc (mpicc uses clang for some reason)
-#endif
-GSL_INCL = -I/usr/local/include  
-GSL_LIBS = -L/usr/local/lib  
-#FFTW_INCL= -I/sw/include -I/opt/local/include
-#FFTW_LIBS= -L/sw/lib     -L/opt/local/lib
-MPICHLIB = -lmpi 
-#HDF5INCL = -I/sw/lib     -I/opt/local/include -DH5_USE_16_API #-DUSE_SSE
-#HDF5LIB  = -L/sw/lib -L/opt/local/lib  -lhdf5 -lz
-endif
-
-ifeq ($(SYSTYPE),"Darwin-mpich")
-CC       = mpicc   # sets the C-compiler
-LINKER   = mpic++
-OPTIMIZE = -m64 -ggdb -O3 -Wall -Wextra -Wno-format-security -Wno-unknown-pragmas
-ifeq (NUM_THREADS,$(findstring NUM_THREADS,$(CONFIGVARS)))
-OPTIMIZE+= -fopenmp
-endif
-GSL_INCL = -I/opt/local/include 
-GSL_LIBS = -L/opt/local/lib
-FFTW_INCL= -I/opt/local/include
-FFTW_LIBS= -L/opt/local/lib
-HDF5INCL = -I/opt/local/include -DH5_USE_16_API
-HDF5LIB  = -L/opt/local/lib  -lhdf5 -lz
-CUDA_INCL= -I/Developer/NVIDIA/CUDA-5.0/include
-CUDA_LIBS= -Xlinker -rpath /Developer/NVIDIA/CUDA-5.0/lib -L/Developer/NVIDIA/CUDA-5.0/lib -lcudart -lnvToolsExt -framework CUDA
-NVCC     = /Developer/NVIDIA/CUDA-5.0/bin/nvcc
-CUDA_OPTIMIZE = -g -G -O3 -m64 --ptxas-options=-v -Xptxas="-v" --maxrregcount=32 -arch=sm_30 $(filter -I%,$(shell mpicc -show))
-endif
-
-
-# modules for Magny
-# module add mvapich2/gcc/64/1.6-qlc
-
-ifeq ($(SYSTYPE),"Magny") 
-CC       =   mpicc
-OPTIMIZE =   -g -Wall -m64   -O3 -msse3 
+ifeq ($(SYSTYPE), "Elgato")
+CC       =   mpiicc
+OPTIMIZE =   -O3 -xavx -ip -DNO_RESTART
 ifeq (NUM_THREADS,$(findstring NUM_THREADS,$(CONFIGVARS)))
 OPTIMIZE +=  -fopenmp
 else
 OPTIMIZE +=  -Wno-unknown-pragmas
 endif
-GSL_INCL =  -I/hits/tap/sw/libs/gsl-1.15/include
-GSL_LIBS =  -L/hits/tap/sw/libs/gsl-1.15/lib  -Xlinker -R -Xlinker /hits/tap/sw/libs/gsl-1.15/lib
-FFTW_INCL=  -I/hits/tap/sw/libs/fftw-2.1.5/include
-FFTW_LIBS=  -L/hits/tap/sw/libs/fftw-2.1.5/lib  -Xlinker -R -Xlinker /hits/tap/sw/libs/fftw-2.1.5/lib
-GMP_INCL =  -I/hits/tap/sw/libs/gmp-5.0.5/include
-GMP_LIBS =  -L/hits/tap/sw/libs/gmp-5.0.5/lib  -Xlinker -R -Xlinker /hits/tap/sw/libs/gmp-5.0.5/lib
-MPICHLIB =
-HDF5INCL =  -I/hits/tap/sw/libs/hdf5-1.8.10/include -DH5_USE_16_API
-HDF5LIB  =  -L/hits/tap/sw/libs/hdf5-1.8.10/lib -lhdf5 -Xlinker -R -Xlinker /hits/tap/sw/libs/hdf5-1.8.10/lib
+GSL_INCL =  -I/home/u9/jngaravitoc/gadget2/local/include
+GSL_LIBS =  -L/home/u9/jngaravitoc/gadget2/local/lib
+FFTW_INCL=  -I/home/u9/jngaravitoc/gadget2/local/include
+FFTW_LIBS=  -L/home/u9/jngaravitoc/gadget2/local/lib -lrfftw_mpi  -lfftw_mpi -lrfftw -lfftw
+#GMP_INCL =  -I/hits/tap/sw/libs/gmp-5.0.5/include
+#GMP_LIBS =  -L/hits/tap/sw/libs/gmp-5.0.5/lib  -Xlinker -R -Xlinker /hits/tap/sw/libs/gmp-5.0.5/lib
+MPICHLIB =  -lmpich
+#HDF5INCL =  -I/hits/tap/sw/libs/hdf5-1.8.10/include -DH5_USE_16_API
+#HDF5LIB  =  -L/hits/tap/sw/libs/hdf5-1.8.10/lib -lhdf5 -Xlinker -R -Xlinker /hits/tap/sw/libs/hdf5-1.8.10/lib
 #OPT      +=  -DNOCALLSOFSYSTEM
 #OPT      +=  -DIMPOSE_PINNING
 #OPT      +=  -DUSE_SSE
 endif
-
-
-# modules for Nehalem cluster
-# module add mvapich2/gcc/64/1.6
-ifeq ($(SYSTYPE),"Nehalem") 
-CC       =   mpicc
-ifeq (SOFTDOUBLEDOUBLE,$(findstring SOFTDOUBLEDOUBLE,$(CONFIGVARS))) 
-CC       =   mpicxx
-endif
-OPTIMIZE =  -O3 -msse3 -g -Wall -m64
-GSL_INCL =  -I/hits/tap/sw/libs/include
-GSL_LIBS =  -L/hits/tap/sw/libs/lib  -Xlinker -R -Xlinker /hits/tap/sw/libs/lib
-FFTW_INCL=  -I/hits/tap/sw/libs/include
-FFTW_LIBS=  -L/hits/tap/sw/libs/lib  -Xlinker -R -Xlinker /hits/tap/sw/libs/lib
-MPICHLIB =
-HDF5INCL =  -I/hits/tap/sw/nehalem/include -DH5_USE_16_API
-#HDF5LIB  =  -L/hits/tap/sw/nehalem/lib -Xlinker -R -Xlinker /hits/tap/sw/nehalem/lib -lhdf5  
-HDF5LIB  =  /hits/tap/sw/nehalem/lib/libhdf5.a -lz
-#OPT      +=  -DNOCALLSOFSYSTEM
-#OPT      +=  -DIMPOSE_PINNING
-#OPT      +=  -DUSE_SSE
-endif
-
-
-
-
-# modules for Magny-Intel
-# module load intel/compiler
-# module load mvapich2/intel/64/1.6-qlc
-
-ifeq ($(SYSTYPE),"Magny-Intel") 
-CC       =   mpicc
-OPTIMIZE =   -O2 -g -Wall -m64
-ifeq (NUM_THREADS,$(findstring NUM_THREADS,$(CONFIGVARS)))
-OPTIMIZE +=  -openmp
-else
-OPTIMIZE +=  -Wno-unknown-pragmas
-endif
-GSL_INCL =  -I/hits/tap/sw/libs/include
-GSL_LIBS =  -L/hits/tap/sw/libs/lib  -Xlinker -R -Xlinker /hits/tap/sw/libs/lib
-FFTW_INCL=
-FFTW_LIBS=
-MPICHLIB =
-MATHLIB  = -limf -lm
-HDF5INCL = -DH5_USE_16_API
-HDF5LIB  = -lhdf5
-#OPT      +=  -DNOCALLSOFSYSTEM
-OPT      +=  -DIMPOSE_PINNING
-endif
-
 
 
 
 ifndef LINKER
 LINKER = $(CC)
 endif
-
-
-
-
-
 ##########################################
 #determine the needed object/header files#
 ##########################################

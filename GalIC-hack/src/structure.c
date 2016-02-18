@@ -78,28 +78,31 @@ void structure_determination(void)
 	  /* virial radius of galaxy */
 	  All.Rvir = All.Vvir / (6.9713700231733506 * All.Hubble);
 
-          fprintf(stdout, "Mvir I %f, Rvir I %f and the constants G %f and H %f\n", All.Mvir, All.Rvir, All.G, All.Hubble);
+          //fprintf(stdout, "Mvir I %f, Rvir I %f and the constants G %f and H %f\n", All.Mvir, All.Rvir, All.G, All.Hubble);
 	  /* halo scale radius */
 	  All.Halo_Rs = All.Rvir / All.Halo_C;
 	  
 	  /* set the scale factor of the hernquist halo */
-	  f_c = log( 1 + All.Halo_C) - All.Halo_C / (1.0 + All.Halo_C); 
+	  f_c = log(1.0 + All.Halo_C) - All.Halo_C / (1.0 + All.Halo_C); 
 	  All.Halo_A = All.Halo_Rs * 1.0 / (1.0/sqrt(2 * f_c) -  1.0 / All.Halo_C);
 	  
 	  /* set the Hernquist equivalent mass */
 	  mhmvir = pow(All.Halo_A / All.Halo_Rs, 2) / (2 * f_c);
-	  All.Mvir = All.Mvir * mhmvir;}  
+	  All.Mvir = All.Mvir * mhmvir;
+          }  
 	  
   
   All.LowerDispLimit = pow(0.01 * All.Vvir, 2);
-  
-  /* Halo mass */
-  All.Halo_Mass = All.Mvir - All.Disk_Mass - All.Bulge_Mass - All.BH_Mass;
-  fprintf(stdout, "Halo Mass %f and A parameter %f  \n", All.Halo_Mass, All.Halo_A);
+
 
   /* determine the masses of all components */
-  All.Disk_Mass = All.MD;
-  All.Bulge_Mass = All.MB;
+  All.Disk_Mass = All.MD * All.Mvir;
+  All.Bulge_Mass = All.MB * All.Mvir;
+  
+  /* Halo mass */
+  All.Halo_Mass = All.Mvir;
+  fprintf(stdout, "Halo Mass %f and A parameter %f, disk mass %f and Bulge Mass %f  \n", All.Halo_Mass, All.Halo_A, All.Disk_Mass, All.Bulge_Mass);
+
 
   All.BH_Mass = All.MBH;
   if(All.MBH > 0)
@@ -123,8 +126,8 @@ void structure_determination(void)
   mpi_printf("halo_spinfactor = %g\n", halo_spinfactor);
 
   /* first guess for disk scale length */
-  All.Disk_H = sqrt(2.0) / 2.0 * All.Lambda / fc(All.Halo_C) * All.Rvir;
-  All.Disk_Z0 = All.DiskHeight * All.Disk_H;	/* sets disk thickness */
+  All.Disk_H = sqrt(2.0) / 2.0 * All.Lambda / fc(All.Halo_C) * All.Rvir; 
+  All.Disk_Z0 = All.DiskHeight * All.Disk_H;	/* sets disk thickness */ 
 
   All.Bulge_A = All.BulgeSize;	/* this will be used if no disk is present */
 
