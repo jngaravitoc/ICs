@@ -1,52 +1,53 @@
 
 %------   File and path names, as well as output file format
 
-OutputDir       ./out2
+OutputDir       ./out
 
-OutputFile      besla    % Base filename of generated sequence of files
-SnapFormat      1       % File format selection
+OutputFile      MW     % Base filename of generated sequence of files
+SnapFormat      1      % File format selection
 
 
 %------   Basic structural parameters of model
 
-CC             11.0       % halo concentration
-V200          200.0       % circular velocity v_200 (in km/sec)
-LAMBDA         0.035      % spin parameter          
-MD             0.035      % disk mass fraction      
-MB             0.05       % bulge mass fraction     
-MBH            0.0        % black hole mass fraction. If zero, no black
+CC             9.6        % halo concentration
+Ahalo          0.0        % Hernquist scale length
+Vvir          143.75      % circular velocity v_vir (in km/sec)
+LAMBDA         0.022      % spin parameter          
+MD             0.03584    % disk mass fraction      
+MB             0.004779   % bulge mass fraction     
+MBH            1.0        % black hole mass fraction. If zero, no black
                           % hole is generated, otherwise one at the centre
                           % is added.
  
 JD             0.035      % disk spin fraction, typically chosen equal to MD
 
-DiskHeight     0.2        % thickness of stellar disk in units of radial scale length 
-BulgeSize      0.1        % bulge scale length in units of halo scale length 
+DiskHeight     0.15       % thickness of stellar disk in units of radial scale length 
+BulgeSize      0.49       % bulge scale length in units of halo scale length 
 
 HaloStretch    1.0        % should be one for a spherical halo, smaller than one corresponds to prolate distortion, otherwise oblate
 BulgeStretch   1.0        % should be one for a spherical bulge, smaller than one corresponds to prolate distortion, otherwise oblate
 
 %------   Particle numbers in target model
 
-N_HALO         100000           % desired number of particles in dark halo 
-N_DISK         100000           % desired number of collisionless particles in disk 
-N_BULGE        100000           % number of bulge particles 
+N_HALO         900000            % desired number of particles in dark halo 
+N_DISK         100000            % desired number of collisionless particles in disk 
+N_BULGE        80000             % number of bulge particles 
 
 
 
 %------   Selection of symmetry constraints of velocity structure
 
-TypeOfHaloVelocityStructure    2      %  0 = spherically symmetric, isotropic
+TypeOfHaloVelocityStructure    0      %  0 = spherically symmetric, isotropic
                                       %  1 = spherically symmetric, anisotropic (with beta parameter specified)
                                       %  2 = axisymmetric, f(E, Lz), with specified net rotation
                                       %  3 = axisymmetric, f(E, Lz, I_3), with <vz^2>/<vR^2> specified and net rotation specified
                                       
-TypeOfDiskVelocityStructure    3      %  0 = spherically symmetric, isotropic
+TypeOfDiskVelocityStructure    2      %  0 = spherically symmetric, isotropic
                                       %  1 = spherically symmetric, anisotropic (with beta parameter specified)
                                       %  2 = axisymmetric, f(E, Lz), with specified net rotation
                                       %  3 = axisymmetric, f(E, Lz, I_3), with <vz^2>/<vR^2> specified and net rotation specified
                                       
-TypeOfBulgeVelocityStructure   2      %  0 = spherically symmetric, isotropic
+TypeOfBulgeVelocityStructure   0      %  0 = spherically symmetric, isotropic
                                       %  1 = spherically symmetric, anisotropic (with beta parameter specified)
                                       %  2 = axisymmetric, f(E, Lz), with specified net rotation
                                       %  3 = axisymmetric, f(E, Lz, I_3), with <vz^2>/<vR^2> specified and net rotation specified
@@ -57,7 +58,7 @@ BulgeBetaParameter             0    %  only relevant for TypeOfBulgeVelocityStru
 
 
 HaloDispersionRoverZratio      4.0   %  only relevant for TypeOfHaloVelocityStructure=3
-DiskDispersionRoverZratio      2.0   %  only relevant for TypeOfDiskVelocityStructure=3
+DiskDispersionRoverZratio      4.0   %  only relevant for TypeOfDiskVelocityStructure=3
 BulgeDispersionRoverZratio     4.0   %  only relevant for TypeOfBulgeVelocityStructure=3
 
 
@@ -112,7 +113,7 @@ SampleParticleCount                 100000000       % number of points sampled f
 %------   Construction of force field
 
 SampleForceNhalo                    0               % number of points to use to for computing force field with a tree 
-SampleForceNdisk                    100000000
+SampleForceNdisk                    10000000
 SampleForceNbulge                   0
 
 Softening                           0.05
@@ -126,8 +127,8 @@ ErrTolForceAcc            0.0025
 
 %------   Domain decomposition parameters used in parallel tree code
 
-MultipleDomains 4
-TopNodeFactor   4
+MultipleDomains 1
+TopNodeFactor   1
 
 
 %------   Parallel I/O paramaters, only affects writing of galaxy files
@@ -138,7 +139,7 @@ NumFilesWrittenInParallel 1
 
 %------   Memory allocation parameters
 
-MaxMemSize                2300.0    % in MB
+MaxMemSize                3500.0    % in MB
 BufferSize                100.0
 BufferSizeGravity         100.0
 
