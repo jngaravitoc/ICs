@@ -64,34 +64,24 @@ void structure_determination(void)
   double hnew, dh, f_c, mhmvir;
 
 
-  if(All.Halo_C == 0.0)
-          {
-	  /* total galaxy mass */
-	  All.Mvir = pow(All.Vvir, 3) / (6.9713700231733506 * All.G * All.Hubble);
-	  /* virial radius of galaxy */
-	  All.Rvir = All.Vvir / (6.9713700231733506 * All.Hubble);
-          All.Halo_A = All.Halo_A * 0.7;
-          }
-  else{
-	  /* total galaxy mass */
-	  All.Mvir = pow(All.Vvir, 3) / (6.9713700231733506 * All.G * All.Hubble);
-	  /* virial radius of galaxy */
-	  All.Rvir = All.Vvir / (6.9713700231733506 * All.Hubble);
+  /* total galaxy mass */
+  All.Mvir = pow(All.Vvir, 3) / (6.9713700231733506 * All.G * All.Hubble);
+  /* virial radius of galaxy */
+  All.Rvir = All.Vvir / (6.9713700231733506 * All.Hubble);
 
-          //fprintf(stdout, "Mvir I %f, Rvir I %f and the constants G %f and H %f\n", All.Mvir, All.Rvir, All.G, All.Hubble);
-	  /* halo scale radius */
-	  All.Halo_Rs = All.Rvir / All.Halo_C;
+  //fprintf(stdout, "Mvir I %f, Rvir I %f and the constants G %f and H %f\n", All.Mvir, All.Rvir, All.G, All.Hubble);
+  /* halo scale radius */
+  All.Halo_Rs = All.Rvir / All.Halo_C;
 	  
-	  /* set the scale factor of the hernquist halo */
-	  f_c = log(1.0 + All.Halo_C) - All.Halo_C / (1.0 + All.Halo_C); 
-	  All.Halo_A = All.Halo_Rs * 1.0 / (1.0/sqrt(2 * f_c) -  1.0 / All.Halo_C);
+  /* set the scale factor of the hernquist halo */
+  f_c = log(1.0 + All.Halo_C) - All.Halo_C / (1.0 + All.Halo_C); 
+  All.Halo_A = All.Halo_Rs * 1.0 / (1.0/sqrt(2 * f_c) -  1.0 / All.Halo_C);
 	  
-	  /* set the Hernquist equivalent mass */
-	  mhmvir = pow(All.Halo_A / All.Halo_Rs, 2) / (2 * f_c);
-	  All.Mvir = All.Mvir * mhmvir;
-          }  
-	  
-  
+  /* set the Hernquist equivalent mass */
+  mhmvir = pow(All.Halo_A / All.Halo_Rs, 2) / (2 * f_c);
+  All.Mvir = All.Mvir * mhmvir;
+
+ 
   All.LowerDispLimit = pow(0.01 * All.Vvir, 2);
 
 

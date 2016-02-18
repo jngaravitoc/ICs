@@ -244,7 +244,7 @@ typedef unsigned long long peanokey;
 #define  ELECTRONMASS    9.1093829e-28
 #define  THOMPSON        6.65245873e-25
 #define  ELECTRONCHARGE  4.8032042e-10
-#define  HUBBLE          3.2407789e-18	/* in h/sec */
+#define  HUBBLE          2.26854550263e-18	/* in 1/sec */
 #define  LYMAN_ALPHA     1215.6e-8	/* 1215.6 Angstroem */
 #define  LYMAN_ALPHA_HeII  303.8e-8	/* 303.8 Angstroem */
 #define  OSCILLATOR_STRENGTH       0.41615

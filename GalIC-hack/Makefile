@@ -104,10 +104,10 @@ OPTIMIZE +=  -fopenmp
 else
 OPTIMIZE +=  -Wno-unknown-pragmas
 endif
-GSL_INCL =  -I/home/u9/jngaravitoc/gadget2/local/include
-GSL_LIBS =  -L/home/u9/jngaravitoc/gadget2/local/lib
-FFTW_INCL=  -I/home/u9/jngaravitoc/gadget2/local/include
-FFTW_LIBS=  -L/home/u9/jngaravitoc/gadget2/local/lib -lrfftw_mpi  -lfftw_mpi -lrfftw -lfftw
+GSL_INCL =  -I/home/u9/jngaravitoc/codes/gadget2/local/include
+GSL_LIBS =  -L/home/u9/jngaravitoc/codes/gadget2/local/lib
+FFTW_INCL=  -I/home/u9/jngaravitoc/codes/gadget2/local/include
+FFTW_LIBS=  -L/home/u9/jngaravitoc/codes/gadget2/local/lib -lrfftw_mpi  -lfftw_mpi -lrfftw -lfftw
 #GMP_INCL =  -I/hits/tap/sw/libs/gmp-5.0.5/include
 #GMP_LIBS =  -L/hits/tap/sw/libs/gmp-5.0.5/lib  -Xlinker -R -Xlinker /hits/tap/sw/libs/gmp-5.0.5/lib
 MPICHLIB =  -lmpich
