@@ -14,3 +14,6 @@ This hacked version includes:
 
 3. The Hubble constant is set to 70/km/s/Mpc
 (set in Gadget h=1.0)
+
+4. The virial mass Mvir in the input parameter file it's the halo Mass. It's better this way because when computing the halo scale length A you have to use Mvir. The total galaxy mass is then Mvir +  Mdisk + Mbulge.
+
