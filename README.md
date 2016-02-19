@@ -15,4 +15,3 @@ This hacked version includes:
 3. The Hubble constant is set to 70/km/s/Mpc
 (set in Gadget h=1.0)
 
-4. The Disk and the Bulge scale length are now input parameters.
