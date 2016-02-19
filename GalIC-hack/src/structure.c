@@ -91,7 +91,7 @@ void structure_determination(void)
   
   /* Halo mass */
   All.Halo_Mass = All.Mvir;
-  fprintf(stdout, "Halo Mass %f and A parameter %f, disk mass %f and Bulge Mass %f  \n", All.Halo_Mass, All.Halo_A, All.Disk_Mass, All.Bulge_Mass);
+  mpi_printf("Halo Mass %f and A parameter %f, disk mass %f and Bulge Mass %f  \n", All.Halo_Mass, All.Halo_A, All.Disk_Mass, All.Bulge_Mass);
 
 
   All.BH_Mass = All.MBH;
