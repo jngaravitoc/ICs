@@ -10,8 +10,9 @@ This hacked version includes:
 
 1. The correct NFW and Henrquist equivalence conversion following the Appendix of van der Marel (2012) http://adsabs.harvard.edu/abs/2012ApJ...753....8V
 
-2. The Hubble constant is set to 70/km/s/Mpc
-(I am not runnning cosmological simulations!)
-Personal note: Input parameters in GalIC with H=70/km/s/Mpc needs to be in (kpc), and in Gadget set h=0.7
+2. Now all the quantities (R, M, A etc..) are calculated at the virial radius. 
 
-3. The Disk and the Bulge scale length are now input parameters.
+3. The Hubble constant is set to 70/km/s/Mpc
+(set in Gadget h=1.0)
+
+4. The Disk and the Bulge scale length are now input parameters.
