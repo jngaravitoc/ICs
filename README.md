@@ -12,5 +12,6 @@ This hacked version includes:
 
 2. The Hubble constant is set to 70/km/s/Mpc
 (I am not runnning cosmological simulations!)
+Personal note: Input parameters in GalIC with H=70/km/s/Mpc needs to be in (kpc), and in Gadget set h=0.7
 
 3. The Disk and the Bulge scale length are now input parameters.
