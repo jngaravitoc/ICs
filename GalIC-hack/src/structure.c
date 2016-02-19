@@ -90,7 +90,7 @@ void structure_determination(void)
   All.Bulge_Mass = All.MB * All.Mvir;
   
   /* Halo mass */
-  All.Halo_Mass = All.Mvir;
+  All.Halo_Mass = All.Mvir - All.Disk_Mass - All.Bulge_Mass;
   mpi_printf("Halo Mass %f and A parameter %f, disk mass %f and Bulge Mass %f  \n", All.Halo_Mass, All.Halo_A, All.Disk_Mass, All.Bulge_Mass);
 
 
