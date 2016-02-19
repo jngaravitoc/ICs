@@ -119,7 +119,7 @@ void structure_determination(void)
   All.Disk_H = sqrt(2.0) / 2.0 * All.Lambda / fc(All.Halo_C) * All.Rvir; 
   All.Disk_Z0 = All.DiskHeight * All.Disk_H;	/* sets disk thickness */ 
 
-  All.Bulge_A = All.BulgeSize;	/* this will be used if no disk is present */
+  All.Bulge_A = All.BulgeSize * All.Halo_A;	/* this will be used if no disk is present */
 
   MType[1] = All.Halo_Mass;
   MType[2] = All.Disk_Mass;
